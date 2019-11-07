@@ -1,37 +1,78 @@
 	<!doctype html>
 	<html lang="en-us">
-	<head>
+
+		<!-- name the title bar of the browser -->
+		<head>
 		<title>Kenta Okuyama</title>
-	</head>
+		<!-- descrition of the page used by search engines: max 155 char -->
+		<meta name="description"
+					content="It is not too late to learn programming" />
+		<!-- keywords to find the page, but no longer effectcs -->
+		<meta name="keywords"
+					content="R, Statistics, Latex, Linux, HTML, CSS" />
+		<!-- search engine add the page to their search results -->
+		<meta name="robots"
+					content="index,follow" />
+		<meta http-equiv="author"
+					content="Kenta Okuyama" />
+		<!-- prevents the browser from caching the page -->
+		<meta http-equiv="pragma"
+					content="no-chache" />
+		<!-- set the page expires -->
+		<meta http-equiv="expires"
+					content="Fri, 15 Nov 2019 23:59:59 GMT" />
+		</head>
+
+
 	<body>
-		<h1 id="top">Welcome</h1>
-		<p>This is an HTML page I created</p>
-		<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="600" height="450" />
+		<!-- header -->
+		<div id="header">
+			<h1> Kenta Okuyama </h1>
+			<ul>
+				<a href="#aboutme">About me</a></p>
+				<a href="#aboutme_more">More about me</a></p>
+				<a href="#contactme">Contact me</a></p>
+			</ul>
+		</div>
+		<!-- header -->
+
+		<!-- intro block -->
+		<div id="header">
+			<h1 id="top">Welcome</h1>
+			<p>This is an HTML page I created</p>
+			<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="600" height="450" />
+			<p>
+			<!-- locate figures next to each other --> 
+			<figure>
+				<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
+				<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
+				<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
+				<figcaption>
+					This is how you locate imgages next to each other
+				</figcaption>
+			</figure>
+			</p>
+		</div>
+		<!-- intro block -->
 		
-		<p>
-		<figure>
-			<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
-			<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
-			<img src="img/ocean.jpg" alt="Ocean photo" title="My favorite" width="400" height="450" />
-			<figcaption>
-				This is how you locate imgages next to each other
-			</figcaption>
-		</figure>
-		</p>
-		
+		<!-- move to the disgnated id -->
 		<p>
 		<a href="#aboutme">About me</a></p>
 		<a href="#aboutme_more">More about me</a></p>
 		<a href="#contactme">Contact me</a></p>
 		</p>
+		
+		<!-- line separete -->
 		<hr />
 	
 		<h2 id="aboutme">About me</h2>
 		<p>My name is <b>Kenta Okuyama</b>, <br />PhD student at <i>Lund University</i></p>
+		
 		<hr />
 	
 		<h3 id="aboutme_more">More about me</h3>
-		<p>I'm affiliated to <abbr title="Center for Primary Health Care Research">CPF</abbr></p>
+		<p>I'm affiliated to <abbr title="Center for Primary Health Care Research">CPF</abbr></p><!-- add abreviation -->
+		
 		<hr />
 	
 		<h4 id="contactme">Contact me</h4>
@@ -39,11 +80,14 @@
 			<p><a href="malito:ko215ok@gmail.com">
 				ko215ok@gmail.com</a></p>
 			<p>Jan garsgatan, Malmo, Sweden</p>
+		
+			<!-- bullet point-->
 			<ul>
 				<li><a href="https://www.linkedin.com/in/kenta-okuyama-31b425a2/?originalSubdomain=jp">Linkedin</a></li>
 				<li><a href="cv/cv.html" target="_blank">CV</a></li>
 			</ul>
 	
 			<p><a href="#top">Top</a></p>
+	
 	</body>
 </html>
