@@ -1,0 +1,51 @@
+body{
+	font-family: Georgia, Arial;
+	font-size: 16px;
+	background-color: white;}
+
+#page{
+	max-width: 940px;
+	min-width: 720px;
+	margin: 10px auto 10px auto;}
+
+#name{
+	font-family: Times, Geogia, sans-serif;
+	color: silver;
+	text-shadow: 2px 2px 3px #666666;}
+
+#header{
+	font-family: Times;
+	text-transform: capitalize;
+	text-decoration: none;
+	text-shadow: 2px 2px 3px #666666;
+	margin: 0px auto 0px auto;
+	border-top: 2px solid silver;
+	border-bottom: 2px solid silver;
+	text-align: center;
+	display: inline;}
+
+#header:focus{
+	background-color: pink;}
+
+#aboutme{
+	font-family: Arial;
+	text-transform: uppercase;}
+
+
+h1, h2, h3{
+	font-family: Arial, Georgia, sans-serif;
+	color: silver;}
+
+p{
+	font-family: Courier, "Courier New", sans-serif;
+	color: DarkCyan;}
+
+
+a{
+	text-decoration: none;
+	display: inline;
+	margin: 0px 3px;}
+
+li{
+	display: inline;
+	margin: 0px 3px;}
