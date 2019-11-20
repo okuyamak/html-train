@@ -1,51 +1,63 @@
 body{
 	font-family: Georgia, Arial;
 	font-size: 16px;
-	background-color: white;}
+	background-color: #000022;}
+
+h2, h3{
+	font-family: "Courier New", Arial, Georgia, sans-serif;
+	text-shadow: 2px 2px 3px #666666;
+	color: silver;
+}
+
+p{
+	font-family: Times, "Courier New", sans-serif;
+	color: DarkCyan;}
+
+a{ 
+	text-decoration: none;
+}
+
+li{
+	text-decoration: none;
+	display: inline;
+	margin: 0px 3px;}
+
 
 #page{
 	max-width: 940px;
 	min-width: 720px;
-	margin: 10px auto 10px auto;}
+	margin: 10px auto 10px auto;
+  padding: 20px;
+	background-color: white;}
 
 #name{
-	font-family: Times, Geogia, sans-serif;
+	font-family: Times, Georgia, sans-serif;
 	color: silver;
-	text-shadow: 2px 2px 3px #666666;}
+	text-shadow: 2px 2px 3px #666666;
+	text-align: left;}
 
-#header{
-	font-family: Times;
+#nav{
+	font-family: Times, Georgia;
 	text-transform: capitalize;
 	text-decoration: none;
 	text-shadow: 2px 2px 3px #666666;
-	margin: 0px auto 0px auto;
 	border-top: 2px solid silver;
 	border-bottom: 2px solid silver;
 	text-align: center;
-	display: inline;}
+	}
 
-#header:focus{
+#nav:focus{
 	background-color: pink;}
 
-#aboutme{
-	font-family: Arial;
-	text-transform: uppercase;}
+
+dt{
+	font-family: Courier, Times, Georgia;
+	text-shadow: 2px 2px 3px #666666;
+ }
+
+dd{
+	font-family: Times, Georgia;
+	text-shadow: 2px 2px 3px #666666;
+	}
 
 
-h1, h2, h3{
-	font-family: Arial, Georgia, sans-serif;
-	color: silver;}
-
-p{
-	font-family: Courier, "Courier New", sans-serif;
-	color: DarkCyan;}
-
-
-a{
-	text-decoration: none;
-	display: inline;
-	margin: 0px 3px;}
-
-li{
-	display: inline;
-	margin: 0px 3px;}
