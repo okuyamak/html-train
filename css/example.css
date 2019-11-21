@@ -36,7 +36,7 @@ li{
 	text-shadow: 2px 2px 3px #666666;
 	text-align: left;}
 
-#nav{
+.nav{
 	font-family: Times, Georgia;
 	text-transform: capitalize;
 	text-decoration: none;
@@ -46,8 +46,34 @@ li{
 	text-align: center;
 	}
 
-#nav:focus{
+.nav:focus{
 	background-color: pink;}
+
+.bio{
+	position: relative;
+	left: 300px;
+}
+
+/* Make sure that padding behaves as expected */
+/* {box-sizing:border-box} */
+
+/* Container for skill bars */
+.container {
+  width: 50%; /* Full width */
+  background-color: #ddd; /* Grey background */
+}
+
+.skills {
+  text-align: right; /* Right-align text */
+  padding-top: 3px; /* Add top padding */
+  padding-bottom: 3px; /* Add bottom padding */
+  color: white; /* White text color */
+}
+
+.html {width: 90%; background-color: DarkCyan;} /* Green */
+.css {width: 80%; background-color: DarkCyan;} /* Blue */
+.js {width: 65%; background-color: DarkCyan;} /* Red */
+.php {width: 60%; background-color: DarkCyan;} /* Dark Grey */
 
 
 dt{
