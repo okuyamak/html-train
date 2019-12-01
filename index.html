@@ -22,25 +22,26 @@
 		<meta http-equiv="expires"
 					content="Fri, 15 Nov 2019 23:59:59 GMT" />
 		<!-- link css file-->
-		<link href="css/example.css" type="text/css"
+		<link href="css/style.css" type="text/css"
 																 rel="stylesheet"/>
 		</head>
 
 
 	<body>
 		<div id="page">
-		<!-- intro block -->
+		<!-- home page -->
 			<div id="home">
 				<p class="intro"> Hello, my name is Kenta Okuyama. <br>
-						PhD student in Epidemiology at Lund University </p>
+						PhD student in Epidemiology at Lund University 
+				</p>
 				<div id="view">
-					<p>View More</p>
+					<p class="view">View More
+					</p>
 				</div>
 			</div>
-		<!-- intro block -->
-		
+		<!-- home page -->
 
-		<!-- navigation bar block -->
+		<!-- navigation bar -->
 		<div id="nav">
 					<ul>
 						<li><a href="#bio">Bio</a></li>
@@ -52,34 +53,46 @@
 		<!-- navigation bar block -->
 
 		<!-- skill block-->
+		<div class="skillbar">
 		<h2>Skills</h2>
+
+		<p>R</p>
+		<div class="container">
+				<div class="skills r">
+				</div>
+		</div>
+
+		<p>Python</p>
+		<div class="container">
+				<div class="skills py">
+				</div>
+		</div>
+
+		<p>Latex</p>
+		<div class="container">
+				<div class="skills latex">
+				</div>
+		</div>
+
 		<p>HTML</p>
 		<div class="container">
-			<div class="skills html"></div>
+				<div class="skills html">
+				</div>
 		</div>
 
 		<p>CSS</p>
 		<div class="container">
-			<div class="skills css"></div>
+			<div class="skills css">
+			</div>
 		</div>
 
 		<p>JavaScript</p>
 		<div class="container">
-			<div class="skills js"></div>
+			<div class="skills js">
+			</div>
 		</div>
 
-		<p>PHP</p>
-		<div class="container">
-			<div class="skills php"></div>
 		</div>
-
-
-		<p>Latex</p>
-		<div id="latex">
-			<div id="latex_bar"></div>
-		</div>
-
-
 		<!-- skill block-->
 		
 
@@ -93,17 +106,26 @@
 		<hr />
 	
 		<h2 id="posts">Posts</h2>
+		<div class="posts">
 		<ul>
-			<li><a href="epi/index.html"><img src="img/ocean.jpg" alt="Link to epidemiology" title="Epidemiology" width="250" height="250" />
-				</a></li>
-			<li><a href="stats/index.html"><img src="img/ocean.jpg" alt="Link to statistics" title="Statistics" width="250" height="250" />
-				</a></li>
-			<li><a href="blog/index.html"><img src="img/ocean.jpg" alt="Link to blogs" title="Blogs" width="250" height="250" />
-				</a></li>
+			<li><a href="epi/index.html">
+					<img src="img/epidemiology.jpeg" alt="Link to epidemiology" title="Epidemiology" width="250" height="250" />
+				</a>
+			</li>
+			<li><a href="stats/index.html">
+					<img src="img/statistics.jpeg" alt="Link to statistics" title="Statistics" width="250" height="250" />
+				</a>
+			</li>
+				
+			<li><a href="blog/index.html">
+					<img src="img/travel.jpeg" alt="Link to blogs" title="Blogs" width="250" height="250" />
+				</a>
+			</li>
 		</ul>
+		</div>
 		<hr />
 	
-		
+
 		<h2 id="contact">Contact</h2>
 			<!-- bullet point-->
 			<ul>
@@ -115,11 +137,15 @@
 		
 		</div>
 		
-<div id="myProgress">
-  <div id="myBar"></div>
-</div>
 
-		<script src="js/example.js"></script>
+		<div id="myProgress">
+			<div id="myBar"></div>
+		</div>
+
+		<div id="footer">
+		</div>
+
+		<script src="js/move.js"></script>
 
 	</body>
 </html>
