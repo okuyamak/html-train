@@ -4,8 +4,11 @@ body{
 	background-color: #000022;
 }
 
+
+/*
 #page{
 }
+*/
 
 h2, h3{
 	font-family: "Courier New", Arial, Georgia, sans-serif;
@@ -51,10 +54,11 @@ p{
 /**************************************************/
 /* style home */
 /**************************************************/
-#home{
+#homePage{
 	padding: 200px 0px;
 }
-.intro{
+
+#intro{
 	font-size: 40px;
 	font-family: "Courier New", Georgia, sans-serif;
 	color: silver;
@@ -62,27 +66,21 @@ p{
 	text-align: center;
 }
 
-/**************************************************/
-/* style navigation bar */
-/**************************************************/
-#nav{
-	font-family: "Courier New", Georgia;
-	font-size: 25px;
-	text-transform: capitalize;
-	text-decoration: none;
-	text-shadow: 2px 2px 3px #666666;
-	text-align: center;
-	display: block;
-	background-color: darkgray;
-	padding: 8px;
-	position: sticky;
-	top: 0;
-	width: 100%;
-	}
-
-li a:hover {
-  background-color: #666666;
+#name{
+	color: orange;
 }
+
+/**************************************************/
+/* background image for biography block */
+/**************************************************/
+
+/*
+#homePage{
+	background-image: url("../img/nightsky2.jpeg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+*/
 
 /**************************************************/
 /* style view bottun */
@@ -108,14 +106,8 @@ li a:hover {
 .view:hover{
   background-color: #666666; /*need to change the size*/
 }
-/**************************************************/
-/* background image for biography block */
-/**************************************************/
-#home{
-	background-image: url("../img/nightsky2.jpeg");
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
+
+
 /**************************************************/
 /* background color animation for view more box */
 /**************************************************/
@@ -143,6 +135,28 @@ li a:hover {
   50% {background-color: #002200;}
   75% {background-color: #220000;}
   100% {background-color: black;}
+}
+
+/**************************************************/
+/* style navigation bar */
+/**************************************************/
+#nav{
+	font-family: "Courier New", Georgia;
+	font-size: 25px;
+	text-transform: capitalize;
+	text-decoration: none;
+	text-shadow: 2px 2px 3px #666666;
+	text-align: center;
+	display: block;
+	background-color: darkgray;
+	padding: 8px;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	}
+
+li a:hover {
+  background-color: #666666;
 }
 
 
@@ -175,6 +189,31 @@ li a:hover {
 .html {width: 80%; background-color: DarkCyan;} /* Blue */
 .css {width: 80%; background-color: DarkCyan;} /* Red */
 .js {width: 50%; background-color: DarkCyan;} /* Dark Grey */
+.jq {width: 10%; background-color: DarkCyan;} /* Dark Grey */
+
+#cont {
+  width: 40%; /* Full width */
+  background-color: white; /* Grey background */
+}
+
+#jqBar {
+  text-align: right; /* Right-align text */
+  padding-top: 3px; /* Add top padding */
+  padding-bottom: 3px; /* Add bottom padding */
+  color: white; /* White text color */
+  width: 50%; 
+  background-color: DarkCyan;
+}
+
+#jqBar2 {
+  text-align: right; /* Right-align text */
+  padding-top: 3px; /* Add top padding */
+  padding-bottom: 3px; /* Add bottom padding */
+  color: white; /* White text color */
+  width: 10%; 
+  background-color: DarkCyan;
+}
+
 
 
 /**************************************************/

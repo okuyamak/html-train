@@ -1,0 +1,163 @@
+@charset "UTF-8";
+* {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+body {
+  max-width: 1920px;
+  min-width: 1260px;
+  color: #444;
+  font-size: 16px;
+  margin: auto;
+  background: #f3f5f6;
+  letter-spacing: 0.5px;
+  font-family: "Arial", YuGothic, "Yu Gothic", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+  display: block;
+}
+
+header {
+  position: relative;
+  background: #fff;
+  text-align: left;
+  padding: 20px 50px;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+.logo {
+  width: 200px;
+  min-height: 80px;
+  line-height: 66px;
+  position: relative;
+  margin-bottom: 13px;
+  text-align: center;
+}
+
+.logo .img {
+  min-width: 200px;
+}
+
+h1 {
+  color: black;
+  line-height: 1;
+  margin: 30px 0;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  color: #000;
+  margin: 30px auto;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.copy {
+  line-height: 53px;
+  font-size: 15px;
+  color: #444444;
+  font-weight: 600;
+  margin: -40px;
+}
+
+.wrapper {
+  background: #fff;
+  padding-bottom: 50px;
+  border: 1px solid #dadce0;
+}
+
+.lead {
+  background-color: #e4ceae;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  padding: 100px 0;
+}
+
+.lead .container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lead .container .left-txt {
+  width: 40%;
+  margin-right: 100px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.lead .container .right-img {
+  width: 25%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.introduction .container {
+  text-align: center;
+}
+
+.introduction .container ul {
+  list-style-type: none;
+}
+
+.introduction .container ul li {
+  margin-bottom: 50px;
+  background-color: #e4ceae;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.introduction .container ul li:nth-child(odd) {
+  margin-left: 20%;
+  margin-right: 10%;
+}
+
+.introduction .container ul li:nth-child(even) {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  margin-right: 20%;
+  margin-left: 10%;
+}
+
+.introduction .container ul .intro-img {
+  margin: 20px 10px;
+  width: 40%;
+}
+
+.introduction .container ul .intro-img :hover {
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1);
+}
+
+.introduction .container ul .intro-datail {
+  text-align: left;
+  width: 40%;
+  margin: 0 100px;
+}
+
+.introduction .container ul .intro-datail .txtl {
+  color: #000;
+  margin: 30px auto;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.introduction .container ul .intro-datail .txtm {
+  color: #000;
+  font-size: 15px;
+}
+/*# sourceMappingURL=stylesA.css.map */

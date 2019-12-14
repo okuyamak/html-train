@@ -1,0 +1,67 @@
+* {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+body {
+  max-width: 1920px;
+  min-width: 1260px;
+  color: #444;
+  font-size: 16px;
+  margin: auto;
+  background: #f3f5f6;
+  letter-spacing: 0.5px;
+  font-family: "Montserrat", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",
+    "ヒラギノ丸ゴ Pro W4", "Hiragino Maru Gothic Pro", 游ゴシック体, "Yu Gothic",
+    YuGothic, sans-serif;
+  display: block;
+}
+
+header {
+  position: relative;
+  background: #fff;
+  text-align: left;
+  padding: 20px 50px;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+.logo {
+  width: 200px;
+  min-height: 80px;
+  line-height: 66px;
+  position: relative;
+  margin-bottom: 13px;
+  text-align: center;
+}
+
+.logo .img {
+  min-width: 200px;
+}
+
+.copy {
+  line-height: 53px;
+  font-size: 15px;
+  color: #444444;
+  font-weight: 600;
+  margin: -40px;
+}
+
+.wrapper {
+  background: #fff;
+  padding-bottom: 50px;
+  border: 1px solid #dadce0;
+}
+
+.lead {
+  background-image: url(../img/yakei.png);
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+}
