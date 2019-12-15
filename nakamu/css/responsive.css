@@ -1,0 +1,25 @@
+@media screen and (max-width: 1024px) {
+  * {
+    float: none;
+    position: static;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    font: none;
+    position: static;
+  }
+}
+
+header {
+  text-align: center;
+}
+
+.lead .left-txt {
+  width: 80%;
+}
+
+.lead .right-img {
+  width: 70%;
+}
+/*# sourceMappingURL=responsive.css.map */
