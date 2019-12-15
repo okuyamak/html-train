@@ -33,7 +33,7 @@ document.write( '<h3>' + time + '</h3>');
 /**********************************/
 /* test parameter for view botton */
 /* change it to move to bio */
-/**********************************/
+/**********************************
 var para = document.getElementById('view');
 
 para.addEventListener('click', updateName);
@@ -42,7 +42,7 @@ function updateName() {
   var name = prompt('type name');
   para.textContent = 'Player 1: ' + name;
 }
-
+**********************************/
 
 /**********************************/
 /* interactive skill bar */
@@ -51,11 +51,11 @@ var i = 0;
 function move(skillID) {
   if (i == 0) {
     i = 1;
-    var elem = document.ElementById(skillID);
+    var elem = document.getElementById(skillID);
     var width = 1;
     var id = setInterval(frame, 10);
     function frame() {
-      if (width >= 100) {
+      if (width >= 50) {
         clearInterval(id);
         i = 0;
       } else {
@@ -66,7 +66,29 @@ function move(skillID) {
   }
 }
 
-move("#jqBar, #jqBar2");
+move("jqBar");
+
+var i = 0;
+function move2(skillID) {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById(skillID);
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 20) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+
+
+move2("jqBar2");
 
 
 
