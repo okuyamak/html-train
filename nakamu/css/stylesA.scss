@@ -1,6 +1,7 @@
 * {
   word-break: break-all;
   word-wrap: break-word;
+  box-sizing: border-box;
 }
 
 body {
@@ -120,7 +121,7 @@ h2 {
       }
       .intro-img {
         margin: 20px 10px;
-        width: 40%;
+        width: 30%;
         :hover {
           transition: all 0.5s ease 0s;
           cursor: pointer;
@@ -130,7 +131,7 @@ h2 {
       .intro-datail {
         text-align: left;
         width: 40%;
-        margin: 0 100px;
+        margin: 0 auto;
         .txtl {
           color: #000;
           margin: 30px auto;
@@ -140,6 +141,74 @@ h2 {
         .txtm {
           color: #000;
           font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+.flow {
+  background-color: #ffffff;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  h2 {
+    margin: 0 auto;
+  }
+  ul {
+    list-style: none;
+    li {
+      width: 80%;
+      height: 300px;
+      display: inline-block;
+      text-align: left;
+      .step-left {
+        width: 50%;
+        display: inline-block;
+        border: 1px solid #ffa500;
+        vertical-align: top;
+        height: 250px;
+        .img-box {
+          text-align: left;
+          width: 40%;
+        }
+        .title {
+          background-color: #4d8fac;
+          width: 150px;
+          text-align: center;
+          .txtm {
+            color: #ffffff;
+            font-weight: bold;
+            margin: 0;
+          }
+        }
+        img {
+          float: left;
+          margin: 10px 30px;
+        }
+        .txt {
+          width: 40%;
+          display: inline-block;
+          .time {
+            font-weight: bold;
+            color: #4d8fac;
+          }
+          .txtm {
+            text-align-last: left;
+          }
+        }
+      }
+      .step-right {
+        width: 45%;
+        height: 252px;
+        display: inline-block;
+        background-color: #ffa500;
+        vertical-align: top;
+        margin-left: -10px;
+        .txtm {
+          padding: 20px;
+          color: #fff;
+          text-align: left;
         }
       }
     }

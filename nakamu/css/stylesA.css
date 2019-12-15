@@ -2,6 +2,8 @@
 * {
   word-break: break-all;
   word-wrap: break-word;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -132,7 +134,7 @@ h2 {
 
 .introduction .container ul .intro-img {
   margin: 20px 10px;
-  width: 40%;
+  width: 30%;
 }
 
 .introduction .container ul .intro-img :hover {
@@ -146,7 +148,7 @@ h2 {
 .introduction .container ul .intro-datail {
   text-align: left;
   width: 40%;
-  margin: 0 100px;
+  margin: 0 auto;
 }
 
 .introduction .container ul .intro-datail .txtl {
@@ -159,5 +161,86 @@ h2 {
 .introduction .container ul .intro-datail .txtm {
   color: #000;
   font-size: 15px;
+}
+
+.flow {
+  background-color: #ffffff;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+
+.flow h2 {
+  margin: 0 auto;
+}
+
+.flow ul {
+  list-style: none;
+}
+
+.flow ul li {
+  width: 80%;
+  height: 300px;
+  display: inline-block;
+  text-align: left;
+}
+
+.flow ul li .step-left {
+  width: 50%;
+  display: inline-block;
+  border: 1px solid #ffa500;
+  vertical-align: top;
+  height: 250px;
+}
+
+.flow ul li .step-left .img-box {
+  text-align: left;
+  width: 40%;
+}
+
+.flow ul li .step-left .title {
+  background-color: #4d8fac;
+  width: 150px;
+  text-align: center;
+}
+
+.flow ul li .step-left .title .txtm {
+  color: #ffffff;
+  font-weight: bold;
+  margin: 0;
+}
+
+.flow ul li .step-left img {
+  float: left;
+  margin: 10px 30px;
+}
+
+.flow ul li .step-left .txt {
+  width: 40%;
+  display: inline-block;
+}
+
+.flow ul li .step-left .txt .time {
+  font-weight: bold;
+  color: #4d8fac;
+}
+
+.flow ul li .step-left .txt .txtm {
+  text-align-last: left;
+}
+
+.flow ul li .step-right {
+  width: 45%;
+  height: 252px;
+  display: inline-block;
+  background-color: #ffa500;
+  vertical-align: top;
+  margin-left: -10px;
+}
+
+.flow ul li .step-right .txtm {
+  padding: 20px;
+  color: #fff;
+  text-align: left;
 }
 /*# sourceMappingURL=stylesA.css.map */
