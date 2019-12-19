@@ -30,6 +30,8 @@ $(function() {
   quizArea.on("click", ".ready", function() {
     //画面を暗くするボックスを表示
     quizArea.find(".quiz_area_bg").show();
+    quizArea.find("#quiz_next").show();
+    quizArea.find(".quiz_decide").hide();
     if ($(".selected").is("[id=true_no]")) {
       //正解の処理 〇を表示
       quizArea.find(".quiz_title").addClass("true ans_icon");
@@ -41,12 +43,16 @@ $(function() {
       quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
     }
     quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
+  });
+  quizArea.on("click", "#quiz_next", function() {
     setTimeout(function() {
       //表示を元に戻す
       quizArea.find(".quiz_ans_area ul li").removeClass("selected");
       quizArea.find(".quiz_title").removeClass("true false ans_icon");
       quizArea.find(".quiz_title").html('第<span class="quiz_no"></span>問');
       quizArea.find(".quiz_area_bg").hide();
+      quizArea.find("#quiz_next").hide();
+      quizArea.find(".quiz_decide").show();
       quizArea.find(".quiz_decide").removeClass("ready");
       $(".quiz_question")
         .children("img")
@@ -59,8 +65,9 @@ $(function() {
       } else {
         quizResult();
       }
-    }, 1500);
+    });
   });
+
   //リスタートボタン
   quizArea.on("click", ".quiz_restart", function() {
     quizReset();
@@ -160,5 +167,7 @@ $(function() {
     quiz_cnt = 0;
     quiz_success_cnt = 0;
     quizShow();
+    quizArea.find("#quiz_next").hide();
+    quizArea.find(".quiz_decide").show();
   }
 });

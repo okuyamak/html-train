@@ -180,11 +180,26 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 10;
-  background: rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
   display: none;
   color: #fff;
   text-align: center;
+}
+
+.quiz_area #quiz_next {
+  display: inline-block;
+  padding: 14px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  background: #ffa500;
+  /*ボタン色*/
+  color: #fff;
+  border-radius: 3px;
+  margin-top: 30px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .quiz_result {
