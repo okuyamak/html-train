@@ -9,17 +9,24 @@
     font: none;
     position: static;
   }
-}
-
-header {
-  text-align: center;
-}
-
-.lead .left-txt {
-  width: 80%;
-}
-
-.lead .right-img {
-  width: 70%;
+  header {
+    text-align: center;
+  }
+  .logo {
+    display: none;
+  }
+  .lead {
+    padding: 20px 0;
+  }
+  .lead .container {
+    width: 100%;
+  }
+  .lead .left-txt {
+    width: 80%;
+    background-color: orange;
+  }
+  .lead .right-img img {
+    display: none;
+  }
 }
 /*# sourceMappingURL=responsive.css.map */

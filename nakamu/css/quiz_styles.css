@@ -32,7 +32,7 @@ body {
 }
 
 .quiz_area .container .ans_icon {
-  z-index: 9999;
+  z-index: 20;
 }
 
 .quiz_area .container .true {
@@ -161,6 +161,7 @@ body {
   background: #ffa500;
   /*ボタン色*/
   border-bottom: solid 4px #e4ceae;
+  z-index: 15;
 }
 
 .quiz_area .quiz_ans_area .quiz_decide:active {
@@ -179,7 +180,7 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 999;
+  z-index: 10;
   background: rgba(0, 0, 0, 0.2);
   display: none;
   color: #fff;

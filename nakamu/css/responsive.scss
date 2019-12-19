@@ -9,23 +9,27 @@
     font: none;
     position: static;
   }
-}
-header {
-  text-align: center;
-}
-.lead {
-  .left-txt {
-    width: 80%;
-  }
-  .right-img {
-    width: 70%;
-  }
-}
-// .introduction {
-//   li {
-//     w
-//   }
-// }
 
-// @media (max-width: 670px) {
-// }
+  header {
+    text-align: center;
+  }
+  .logo {
+    display: none;
+  }
+  .lead {
+    padding: 20px 0;
+    .container {
+      width: 100%;
+    }
+    .left-txt {
+      width: 80%;
+      background-color: orange;
+    }
+    .right-img {
+      // width: 70%;
+      img {
+        display: none;
+      }
+    }
+  }
+}

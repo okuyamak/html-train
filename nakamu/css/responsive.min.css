@@ -1,1 +1,1 @@
-@media screen and (max-width: 1024px){*{float:none;position:static}img{max-width:100%;height:auto;font:none;position:static}}header{text-align:center}.lead .left-txt{width:80%}.lead .right-img{width:70%}
+@media screen and (max-width: 1024px){*{float:none;position:static}img{max-width:100%;height:auto;font:none;position:static}header{text-align:center}.logo{display:none}.lead{padding:20px 0}.lead .container{width:100%}.lead .left-txt{width:80%;background-color:orange}.lead .right-img img{display:none}}

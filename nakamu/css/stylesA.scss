@@ -5,8 +5,8 @@
 }
 
 body {
-  max-width: 1920px;
-  min-width: 1260px;
+  // max-width: 1920px;
+  // min-width: 1024px;
   color: #444;
   font-size: 16px;
   margin: auto;
@@ -39,10 +39,6 @@ a {
   position: relative;
   margin-bottom: 13px;
   text-align: center;
-
-  .img {
-    min-width: 200px;
-  }
 }
 
 h1 {
