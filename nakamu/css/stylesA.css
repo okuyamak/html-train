@@ -1,4 +1,8 @@
 @charset "UTF-8";
+html {
+  font-size: 62.5%;
+}
+
 * {
   word-break: break-all;
   word-wrap: break-word;
@@ -8,7 +12,7 @@
 
 body {
   color: #444;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: auto;
   background: #f3f5f6;
   letter-spacing: 0.5px;
@@ -192,19 +196,19 @@ h2 {
   width: 40%;
 }
 
-.flow ul li .step-left .title {
+.flow ul li .step-left .img-box .title {
   background-color: #4d8fac;
   width: 150px;
   text-align: center;
 }
 
-.flow ul li .step-left .title .txtm {
+.flow ul li .step-left .img-box .title .txtm {
   color: #ffffff;
   font-weight: bold;
   margin: 0;
 }
 
-.flow ul li .step-left img {
+.flow ul li .step-left .img-box img {
   float: left;
   margin: 10px 30px;
 }

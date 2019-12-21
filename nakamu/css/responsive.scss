@@ -1,4 +1,4 @@
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 959px) {
   * {
     float: none;
     position: static;
@@ -6,7 +6,6 @@
   img {
     max-width: 100%;
     height: auto;
-    font: none;
     position: static;
   }
 
@@ -21,14 +20,91 @@
     .container {
       width: 100%;
     }
-    .left-txt {
-      width: 80%;
-      background-color: orange;
+    .container {
+      .left-txt {
+        width: 80%;
+        margin-right: 0;
+      }
+      .right-img {
+        width: 40%;
+        // img {
+        //   display: none;
+        // }
+      }
     }
-    .right-img {
-      // width: 70%;
-      img {
-        display: none;
+  }
+  .introduction {
+    .container {
+      ul {
+        li:nth-child(odd) {
+          margin: 0 10% 50px 10%;
+        }
+        li:nth-child(even) {
+          margin: 0 10% 50px 10%;
+        }
+        .intro-img {
+          display: none;
+        }
+        .intro-datail {
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  .flow {
+    ul {
+      li {
+        height: 600px;
+        text-align: center;
+        .step-left {
+          width: 90%;
+          height: 300px;
+        }
+        .step-right {
+          width: 90%;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  * {
+    float: none;
+    position: static;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    position: static;
+  }
+  .flow {
+    ul {
+      li {
+        width: 95%;
+        height: 750px;
+        text-align: center;
+        .step-left {
+          width: 100%;
+          height: 400px;
+          .img-box {
+            text-align: center;
+            width: 100%;
+            img {
+              width: 80%;
+            }
+          }
+          .txt {
+            width: 90%;
+          }
+        }
+        .step-right {
+          width: 100%;
+          height: 300px;
+          margin-left: 0;
+        }
       }
     }
   }
