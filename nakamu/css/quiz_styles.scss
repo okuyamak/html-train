@@ -104,6 +104,18 @@ body {
         background-color: #d21d22;
       }
     }
+    #last_score {
+      display: inline-block;
+      padding: 14px 30px;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      background: #ddd; /*ボタン色*/
+      color: #fff;
+      border-radius: 3px;
+      margin-top: 30px;
+      cursor: pointer;
+    }
     .decide_container {
       text-align: center;
     }
@@ -150,7 +162,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    background: #ffa500; /*ボタン色*/
+    background: #d21d22; /*ボタン色*/
     color: #fff;
     border-radius: 3px;
     margin-top: 30px;

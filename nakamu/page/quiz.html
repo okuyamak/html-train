@@ -2,13 +2,14 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>電気工事士</title>
     <link rel="stylesheet" href="../css/quiz_styles.css" />
   </head>
   <body>
     <div class="quiz_area">
       <!-- 追加 画面に被せる黒背景 -->
-      <div class="quiz_area_bg"></div>
+      <!-- <div class="quiz_area_bg"></div> -->
       <div class="container">
         <div class="quiz_set">
           <div class="quiz_title">第<span class="quiz_no"></span>問</div>
@@ -19,7 +20,7 @@
             <ul></ul>
             <div class="decide_container">
               <div class="quiz_decide">決定</div>
-              <div id="quiz_next">つぎへ</div>
+              <div id="quiz_next">Next</div>
             </div>
           </div>
         </div>
@@ -27,7 +28,9 @@
       </div>
     </div>
     <script src="../jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="../js/R01_1.js"></script>
+    <script src="../jquery.cookie.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script> -->
+    <!-- <script type="text/javascript" src="../js/R01_1.js"></script> -->
     <script type="text/javascript" src="../js/quiz.js"></script>
   </body>
 </html>

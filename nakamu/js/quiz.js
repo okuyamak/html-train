@@ -1,4 +1,5 @@
-// import aryQuiz from "./R01_1";
+"use strict";
+
 $(function() {
   var shuffled_true;
   var quizArea = $(".quiz_area");
@@ -21,9 +22,12 @@ $(function() {
   quizReset();
 
   quizArea.on("click", ".quiz_ans_area ul li", function() {
-    quizArea.find(".quiz_decide").addClass("ready");
-    quizArea.find(".selected").removeClass("selected");
-    $(this).addClass("selected");
+    if ($("#true_indicate").length) {
+    } else {
+      quizArea.find(".quiz_decide").addClass("ready");
+      quizArea.find(".selected").removeClass("selected");
+      $(this).addClass("selected");
+    }
   });
 
   //回答を選択した後の処理
@@ -45,27 +49,25 @@ $(function() {
     quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
   });
   quizArea.on("click", "#quiz_next", function() {
-    setTimeout(function() {
-      //表示を元に戻す
-      quizArea.find(".quiz_ans_area ul li").removeClass("selected");
-      quizArea.find(".quiz_title").removeClass("true false ans_icon");
-      quizArea.find(".quiz_title").html('第<span class="quiz_no"></span>問');
-      quizArea.find(".quiz_area_bg").hide();
-      quizArea.find("#quiz_next").hide();
-      quizArea.find(".quiz_decide").show();
-      quizArea.find(".quiz_decide").removeClass("ready");
-      $(".quiz_question")
-        .children("img")
-        .attr("src", "../R01_img/2019-1-000.jpg");
-      //問題のカウントを進める
-      quiz_cnt++;
-      if (quiz_fin_cnt > quiz_cnt) {
-        //次の問題を設定する
-        quizShow();
-      } else {
-        quizResult();
-      }
-    });
+    //表示を元に戻す
+    quizArea.find(".quiz_ans_area ul li").removeClass("selected");
+    quizArea.find(".quiz_title").removeClass("true false ans_icon");
+    quizArea.find(".quiz_title").html('第<span class="quiz_no"></span>問');
+    quizArea.find(".quiz_area_bg").hide();
+    quizArea.find("#quiz_next").hide();
+    quizArea.find(".quiz_decide").show();
+    quizArea.find(".quiz_decide").removeClass("ready");
+    $(".quiz_question")
+      .children("img")
+      .attr("src", "../R01_img/2019-1-000.jpg");
+    //問題のカウントを進める
+    quiz_cnt++;
+    if (quiz_fin_cnt > quiz_cnt) {
+      //次の問題を設定する
+      quizShow();
+    } else {
+      quizResult();
+    }
   });
 
   //リスタートボタン
