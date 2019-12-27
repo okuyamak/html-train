@@ -7,20 +7,53 @@ $(function() {
   var quiz_cnt = 0;
   var quiz_fin_cnt = 3;
   var quiz_success_cnt = 0;
+  var x, y;
   var choice = ["イ", "ロ", "ハ", "ニ"];
-  var aryQuiz = [];
-  aryQuiz.push(
-    { answer: "イ", form: "2" },
-    { answer: "ロ", form: "1" },
-    { answer: "ハ", form: "4" },
-    { answer: "ニ", form: "1" },
-    { answer: "イ", form: "1" }
+  var pnt_sprit = ["q10", "q20", "q30", "q40", "q50", "ave", "all", "re"];
+  var years = [
+    "H23",
+    "H24",
+    "H25",
+    "H26",
+    "H27",
+    "H28",
+    "H29",
+    "H30",
+    "H31",
+    "R01"
+  ];
+  var pnt = new Array(years.length);
+  for (y = 0; y < years.length; y++) {
+    pnt[years[y]] = new Array(pnt_sprit.length);
+    for (x = 0; x < pnt_sprit.length; x++) {
+      pnt[years[y]][pnt_sprit[x]] = 0;
+    }
+  }
+  var pastNormal = new Array(years.length);
+  for (let y = 0; y < years.length; y++) {
+    pastNormal[years[y]] = new Array(50).fill(0);
+  }
+  var pastType = new Array(years.length);
+  for (let y = 0; y < years.length; y++) {
+    pastType[years[y]] = new Array(50).fill(0);
+  }
+  console.log(pnt);
+  // console.log(pastNormal);
+  // console.log(pastType);
+  pnt = JSON.stringify(pnt); // JSON形式にする
+  // console.log(pnt);
+  // localStorage.setItem("pnt", pnt);
+  // console.log(JSON.parse(localStorage.getItem("pnt"))); // JSON形式から戻す
+
+  var H30 = [];
+  H30.push(
+    { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 1 }
   );
 
-  // var aryQuiz;
-
   quizReset();
-
   quizArea.on("click", ".quiz_ans_area ul li", function() {
     if ($("#true_indicate").length) {
     } else {
@@ -85,8 +118,8 @@ $(function() {
       .children("img")
       .attr("src", que_src);
     quizArea.find(".quiz_ans_area ul").empty();
-    var success = aryQuiz[quiz_cnt]["answer"];
-    var form = aryQuiz[quiz_cnt]["form"];
+    var success = H30[quiz_cnt]["ans"];
+    var form = H30[quiz_cnt]["form"];
     for (let i = 1; i < 5; i++) {
       var fuga =
         "<li>" + '<img src="../R01_img/2019-1-ANo-000.jpg"/>' + "</li>";
@@ -154,6 +187,7 @@ $(function() {
   function quizResult() {
     quizArea.find(".quiz_set").hide();
     var text = quiz_fin_cnt + "問中" + quiz_success_cnt + "問正解！";
+    pnt["H30"]["q10"] = quiz_success_cnt;
     if (quiz_fin_cnt === quiz_success_cnt) {
       text += "<br>全問正解おめでとう！";
     }
