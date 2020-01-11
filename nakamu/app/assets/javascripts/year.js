@@ -214,13 +214,13 @@ $(function() {
     $.ajax({
       url: "/quiz_year/update",
       type: "POST",
-      dataType: "html",
-      async: true,
       data: {
         // quiz_s_c: ans_import
         // quiz_s_c: gon.ans_import
         quiz_s_c: "3"
-      }
+      },
+      dataType: "html",
+      async: true
     });
   }
 });
