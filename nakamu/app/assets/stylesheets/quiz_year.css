@@ -199,17 +199,17 @@ body {
   z-index: 10;
 }
 
-.quiz_result {
+#quiz_result {
   text-align: center;
   font-size: 50px;
 }
 
-.quiz_result .quiz_restart {
+#quiz_result .quiz_restart {
   font-size: 40px;
   cursor: pointer;
 }
 
-.quiz_result .quiz_restart:hover {
+#quiz_result .quiz_restart:hover {
   background: #444;
   color: #fff;
 }

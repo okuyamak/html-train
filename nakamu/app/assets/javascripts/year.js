@@ -8,6 +8,7 @@ $(function() {
   var quiz_fin_cnt = 3;
   var quiz_success_cnt = 0;
   var x, y;
+  var quiz_s_c = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var pnt_sprit = ["q10", "q20", "q30", "q40", "q50", "ave", "all", "re"];
   var years = [
@@ -37,13 +38,6 @@ $(function() {
   for (let y = 0; y < years.length; y++) {
     pastType[years[y]] = new Array(50).fill(0);
   }
-  // console.log(pnt);
-  // console.log(pastNormal);
-  // console.log(pastType);
-  // pnt = JSON.stringify(pnt); // JSON形式にする
-  // console.log(pnt);
-  // localStorage.setItem("pnt", pnt);
-  // console.log(JSON.parse(localStorage.getItem("pnt"))); // JSON形式から戻す
 
   var H30 = [];
   H30.push(
@@ -52,63 +46,13 @@ $(function() {
     { ans: "イ", type: 1, form: 1 },
     { ans: "イ", type: 1, form: 1 }
   );
+  var ans_record = [];
+  var ans_import;
 
   quizReset();
-  quizArea.on("click", ".quiz_ans_area ul li", function() {
-    if ($("#true_indicate").length) {
-    } else {
-      quizArea.find(".quiz_decide").addClass("ready");
-      quizArea.find(".selected").removeClass("selected");
-      $(this).addClass("selected");
-    }
-  });
-
-  //回答を選択した後の処理
-  quizArea.on("click", ".ready", function() {
-    //画面を暗くするボックスを表示
-    quizArea.find(".quiz_area_bg").show();
-    quizArea.find("#quiz_next").show();
-    quizArea.find(".quiz_decide").hide();
-    if ($(".selected").is("[id=true_no]")) {
-      //正解の処理 〇を表示
-      quizArea.find(".quiz_title").addClass("true ans_icon");
-      quizArea.find(".quiz_title").text("正解");
-      quiz_success_cnt++;
-    } else {
-      //不正解の処理
-      quizArea.find(".quiz_title").addClass("false ans_icon");
-      quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
-    }
-    quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
-  });
-  quizArea.on("click", "#quiz_next", function() {
-    //表示を元に戻す
-    quizArea.find(".quiz_ans_area ul li").removeClass("selected");
-    quizArea.find(".quiz_title").removeClass("true false ans_icon");
-    quizArea.find(".quiz_title").html('第<span class="quiz_no"></span>問');
-    quizArea.find(".quiz_area_bg").hide();
-    quizArea.find("#quiz_next").hide();
-    quizArea.find(".quiz_decide").show();
-    quizArea.find(".quiz_decide").removeClass("ready");
-    $(".quiz_question")
-      .children("img")
-      .attr("src", "/2019-1-000.jpg");
-    //問題のカウントを進める
-    quiz_cnt++;
-    if (quiz_fin_cnt > quiz_cnt) {
-      //次の問題を設定する
-      quizShow();
-    } else {
-      quizResult();
-    }
-  });
-
-  //リスタートボタン
-  quizArea.on("click", ".quiz_restart", function() {
-    quizReset();
-  });
   //クイズの表示
   function quizShow() {
+    quizArea.find("#quiz_record").hide();
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
     var que_src = $(".quiz_question")
       .children("img")
@@ -156,6 +100,63 @@ $(function() {
         break;
     }
   }
+
+  //回答を選択した後の処理
+  quizArea.on("click", ".ready", function() {
+    //画面を暗くするボックスを表示
+    quizArea.find(".quiz_area_bg").show();
+    quizArea.find("#quiz_next").show();
+    quizArea.find(".quiz_decide").hide();
+    if ($(".selected").is("[id=true_no]")) {
+      //正解の処理 〇を表示
+      quizArea.find(".quiz_title").addClass("true ans_icon");
+      quizArea.find(".quiz_title").text("正解");
+      quiz_success_cnt++;
+      ans_record.push(1);
+    } else {
+      //不正解の処理
+      quizArea.find(".quiz_title").addClass("false ans_icon");
+      quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
+      ans_record.push(0);
+    }
+    quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
+  });
+
+  quizArea.on("click", "#quiz_next", function() {
+    //表示を元に戻す
+    quizArea.find(".quiz_ans_area ul li").removeClass("selected");
+    quizArea.find(".quiz_title").removeClass("true false ans_icon");
+    quizArea.find(".quiz_title").html('第<span class="quiz_no"></span>問');
+    quizArea.find(".quiz_area_bg").hide();
+    quizArea.find("#quiz_next").hide();
+    quizArea.find(".quiz_decide").show();
+    quizArea.find(".quiz_decide").removeClass("ready");
+    $(".quiz_question")
+      .children("img")
+      .attr("src", "/2019-1-000.jpg");
+    //問題のカウントを進める
+    quiz_cnt++;
+    if (quiz_fin_cnt > quiz_cnt) {
+      //次の問題を設定する
+      quizShow();
+    } else {
+      quizResult();
+    }
+  });
+
+  //リスタートボタン
+  quizArea.on("click", ".quiz_restart", function() {
+    quizReset();
+  });
+
+  quizArea.on("click", ".quiz_ans_area ul li", function() {
+    if ($("#true_indicate").length) {
+    } else {
+      quizArea.find(".quiz_decide").addClass("ready");
+      quizArea.find(".selected").removeClass("selected");
+      $(this).addClass("selected");
+    }
+  });
   //シャッフル
   function quizShuffle() {
     var bool = [1, -1];
@@ -184,14 +185,19 @@ $(function() {
   function quizResult() {
     quizArea.find(".quiz_set").hide();
     var text = quiz_fin_cnt + "問中" + quiz_success_cnt + "問正解！";
-    pnt["H30"]["q10"] = quiz_success_cnt;
     if (quiz_fin_cnt === quiz_success_cnt) {
       text += "<br>全問正解おめでとう！";
     }
     text +=
       '<br><input type="button" value="もう一度挑戦する" class="quiz_restart">';
-    quizArea.find(".quiz_result").html(text);
-    quizArea.find(".quiz_result").show();
+    quizArea.find("#quiz_result").html(text);
+    quizArea.find("#quiz_result").show();
+    quizArea.find("#quiz_record").show();
+    ans_import = ans_record.join("");
+    console.log(ans_import);
+    ans_import = parseInt(ans_import, 2);
+    console.log(ans_import);
+    quizRecord();
   }
 
   //数値のリセット
@@ -202,5 +208,19 @@ $(function() {
     quizShow();
     quizArea.find("#quiz_next").hide();
     quizArea.find(".quiz_decide").show();
+  }
+  //解答の記録
+  function quizRecord() {
+    $.ajax({
+      url: "/quiz_year/update",
+      type: "POST",
+      dataType: "html",
+      async: true,
+      data: {
+        // quiz_s_c: ans_import
+        // quiz_s_c: gon.ans_import
+        quiz_s_c: "3"
+      }
+    });
   }
 });

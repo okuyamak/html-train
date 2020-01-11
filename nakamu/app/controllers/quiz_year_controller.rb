@@ -2,12 +2,19 @@ class QuizYearController < ApplicationController
 
   before_action :authenticate_user,{only: [:R01]}
 
-  def create
-    # @quiz_year = quiz_years.new(user_id: @user.id)
-    # @quiz_year.save
-    # redirect_to("/")
+  def R01
+    # gon.user_name = @current_user.name
   end
 
-  def R01
+  def update
+    @year = QuizYear.find_by(user_id: session[:user_id])
+    if @year
+      @year.r01_10 = params[:quiz_s_c]
+      # @year.r01_10 = 5
+    else
+      @year = QuizYear.new(user_id:session[:user_id], r01_10:params[:quiz_s_c])
+    end
+    @year.save
+    redirect_to("/")
   end
 end
