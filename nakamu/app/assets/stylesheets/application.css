@@ -1,7 +1,6 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
@@ -13,3 +12,35 @@
  *= require_tree .
  *= require_self
  */
+/* ul.topnav {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: #e4ceae;
+}
+ul.topnav > li {
+  float: left;
+}
+ul.topnav > li {
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+ul.topnav > li:hover:not(.active) {
+  background-color: #ffa500;
+}
+ul.topnav > li.active {
+  background-color: #da3c41;
+}
+ul.topnav > li.right {
+  float: right;
+}
+@media screen and (max-width: 480px) {
+  ul.topnav li.right,
+  ul.topnav li {
+    float: none;
+  }
+} */

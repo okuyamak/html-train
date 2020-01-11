@@ -1,12 +1,9 @@
-<% if @error_message %>
-<div class="form-error">
-  <%= @error_message%>
+<div class="main">
+  <p class="sign" >ログイン</p>
+<%= form_tag("/login" ,class: "form1") do%>
+<input class="un" name="name"  placeholder="ユーザー名"/>
+<input class ="pass" type="password"  name="password" placeholder="パスワード"  />
+<input class = "submit" type="submit"  value="ログイン" />
+<% end %>
+
 </div>
-<% end %>
-<%= form_tag("/login") do%>
-<p>ユーザー名</p>
-<input name="name" value="<%= @name %>" />
-<p>パスワード</p>
-<input type="password" name="password" />
-<input type="submit" value="ログイン" />
-<% end %>

@@ -1,7 +1,9 @@
-<%= form_tag("/users/create") do%>
-<p>ユーザー名</p>
-<input name="name" />
-<p>パスワード</p>
-<input type="password" name="password" />
-<input type="submit" value="新規登録" />
+<div class="main">
+  <p class="sign" >新規登録</p>
+<%= form_tag("/users/create" ,class: "form1") do%>
+<input class="un" name="name"  placeholder="ユーザー名"/>
+<input class ="pass" type="password"  name="password" placeholder="パスワード"  />
+<input class = "submit" type="submit"  value="登 録" />
 <% end %>
+
+</div>

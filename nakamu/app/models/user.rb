@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-  validates :name, {uniqueness:true,presence:true}
+  # has_one :quiz_years, dependent: :destroy
+  validates :name, {uniqueness:true,presence:true,length:{ minimum: 4 }}
+  validates :password, length:{ minimum: 4 }
 end
