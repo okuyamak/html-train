@@ -8,7 +8,8 @@ $(function() {
   var quiz_fin_cnt = 3;
   var quiz_success_cnt = 0;
   var x, y;
-  var quiz_s_c = 0;
+  // var quiz_s_c = 0;
+  // var quiz_s_d = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var pnt_sprit = ["q10", "q20", "q30", "q40", "q50", "ave", "all", "re"];
   var years = [
@@ -47,7 +48,7 @@ $(function() {
     { ans: "イ", type: 1, form: 1 }
   );
   var ans_record = [];
-  var ans_import;
+  var ans_import = 0;
 
   quizReset();
   //クイズの表示
@@ -215,12 +216,25 @@ $(function() {
       url: "/quiz_year/update",
       type: "POST",
       data: {
-        // quiz_s_c: ans_import
+        quiz_s_c: ans_import,
         // quiz_s_c: gon.ans_import
-        quiz_s_c: "3"
+        // quiz_s_c: "5",
+        quiz_s_d: 99
       },
       dataType: "html",
       async: true
     });
+    // $.ajax({
+    //   url: "/quiz_year/update",
+    //   type: "POST",
+    //   data: {
+    //     // quiz_s_c: ans_import
+    //     // quiz_s_c: gon.ans_import
+    //     quiz_s_c: "5",
+    //     quiz_s_d: 10
+    //   },
+    //   dataType: "json",
+    //   async: true
+    // });
   }
 });
