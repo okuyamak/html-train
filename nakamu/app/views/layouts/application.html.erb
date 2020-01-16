@@ -21,7 +21,7 @@
     <%= link_to("HOME","/") %>
   </li>
   <li>
-    <%= link_to("練習問題","/year/R01",data:{"turbolinks" => false}) %>
+    <%= link_to("練習問題","/year/home") %>
   </li>
   <% if session[:user_id] %>
   <li>
@@ -32,10 +32,10 @@
   </li>
   <% else %>
   <li>
-    <%= link_to("ログイン","/login", class: "right") %>
+    <%= link_to("ログイン","/login" ) %>
   </li>
   <li>
-    <%= link_to("新規登録","/signup", class: "right") %>
+    <%= link_to("新規登録","/signup" ) %>
   </li>
 </ul>
 <% end %>

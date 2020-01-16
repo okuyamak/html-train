@@ -8,8 +8,6 @@ $(function() {
   var quiz_fin_cnt = 3;
   var quiz_success_cnt = 0;
   var x, y;
-  // var quiz_s_c = 0;
-  // var quiz_s_d = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var pnt_sprit = ["q10", "q20", "q30", "q40", "q50", "ave", "all", "re"];
   var years = [
@@ -49,10 +47,11 @@ $(function() {
   );
   var ans_record = [];
   var ans_import = 0;
-
   quizReset();
   //クイズの表示
   function quizShow() {
+    console.log(gon.year);
+    console.log(gon.no);
     quizArea.find("#quiz_record").hide();
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
     var que_src = $(".quiz_question")
@@ -66,16 +65,17 @@ $(function() {
     var success = H30[quiz_cnt]["ans"];
     var form = H30[quiz_cnt]["form"];
     for (let i = 1; i < 5; i++) {
-      var fuga = "<li>" + ' <img src="/2019-1-ANo-000.jpg"/>' + "</li>";
+      var fuga = "<li>" + ' <img src="/year-1-ANo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
         fuga =
-          "<li  id = true_no >" + '<img src="/2019-1-ANo-000.jpg"/>' + "</li>";
+          "<li  id = true_no >" + '<img src="/year-1-ANo-000.jpg"/>' + "</li>";
       }
       var ans_src = $(fuga)
         .children("img")
         .attr("src")
-        .replace("No", quiz_cnt + 1)
-        .replace("000", i);
+        .replace("No", gon.no + quiz_cnt)
+        .replace("000", i)
+        .replace("year", gon.year);
       quizArea.find(".quiz_ans_area ul").append(fuga);
       $(".quiz_ans_area ul li:last")
         .children("img")
@@ -134,7 +134,7 @@ $(function() {
     quizArea.find(".quiz_decide").removeClass("ready");
     $(".quiz_question")
       .children("img")
-      .attr("src", "/2019-1-000.jpg");
+      .attr("src", "/year-1-000.jpg");
     //問題のカウントを進める
     quiz_cnt++;
     if (quiz_fin_cnt > quiz_cnt) {
@@ -213,28 +213,16 @@ $(function() {
   //解答の記録
   function quizRecord() {
     $.ajax({
-      url: "/quiz_year/update",
+      url: "/year/update",
       type: "POST",
+      dataType: "html",
+      async: true,
       data: {
         quiz_s_c: ans_import,
         // quiz_s_c: gon.ans_import
         // quiz_s_c: "5",
-        quiz_s_d: 99
-      },
-      dataType: "html",
-      async: true
+        quiz_s_d: 55
+      }
     });
-    // $.ajax({
-    //   url: "/quiz_year/update",
-    //   type: "POST",
-    //   data: {
-    //     // quiz_s_c: ans_import
-    //     // quiz_s_c: gon.ans_import
-    //     quiz_s_c: "5",
-    //     quiz_s_d: 10
-    //   },
-    //   dataType: "json",
-    //   async: true
-    // });
   }
 });
