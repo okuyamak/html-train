@@ -50,9 +50,8 @@ $(function() {
   quizReset();
   //クイズの表示
   function quizShow() {
-    console.log(gon.year);
-    console.log(gon.no);
     quizArea.find("#quiz_record").hide();
+    quizArea.find("#quiz_number").text(quiz_cnt + 1 + "/" + quiz_fin_cnt);
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
     var que_src = $(".quiz_question")
       .children("img")
