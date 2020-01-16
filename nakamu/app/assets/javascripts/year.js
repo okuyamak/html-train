@@ -64,10 +64,10 @@ $(function() {
     var success = H30[quiz_cnt]["ans"];
     var form = H30[quiz_cnt]["form"];
     for (let i = 1; i < 5; i++) {
-      var fuga = "<li>" + ' <img src="/year-1-ANo-000.jpg"/>' + "</li>";
+      var fuga = "<li>" + ' <img src="/year/aNo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
         fuga =
-          "<li  id = true_no >" + '<img src="/year-1-ANo-000.jpg"/>' + "</li>";
+          "<li  id = true_no >" + '<img src="/year/aNo-000.jpg"/>' + "</li>";
       }
       var ans_src = $(fuga)
         .children("img")

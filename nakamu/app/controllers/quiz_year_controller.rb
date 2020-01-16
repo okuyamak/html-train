@@ -6,15 +6,15 @@ class QuizYearController < ApplicationController
   def home
   end
   def r01_10
-    # @quiz_year = 2019
-    # @quiz_no = 1
+    @@quiz_year = 2019
+    @@quiz_no = 1
     redirect_to("/year/R01")
   end
   def R01
-    # gon.year = @quiz_year
-    # gon.no = @quiz_no
-    gon.year = 2019
-    gon.no = 1
+    gon.year = @@quiz_year
+    gon.no = @@quiz_no
+    # gon.year = 2019
+    # gon.no = 1
 
   end
 
