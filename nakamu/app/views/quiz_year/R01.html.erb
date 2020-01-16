@@ -1,6 +1,4 @@
-<% content_for :title do %>
-過去問題集
-<% end %>
+<% content_for :title do %> 過去問題集 <% end %>
 <div class="quiz_area">
   <!-- 追加 画面に被せる黒背景 -->
   <!-- <div class="quiz_area_bg"></div> -->
@@ -9,7 +7,8 @@
       <div class="quiz_title">第<span class="quiz_no"></span>問</div>
       <div id="quiz_number"></div>
       <div class="quiz_question">
-        <%= image_tag"/2019/q000.jpg", alt: "問題" %>
+        <%= image_tag"/year/q000.jpg", alt: "問題" %>
+        <!-- <img src="/year/q000.jpg" alt="問題" /> -->
       </div>
       <div class="quiz_ans_area">
         <ul></ul>

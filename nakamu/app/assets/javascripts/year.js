@@ -5,44 +5,21 @@ $(function() {
   var quizArea = $(".quiz_area");
   var quiz_html = quizArea.html();
   var quiz_cnt = 0;
-  var quiz_fin_cnt = 3;
+  var quiz_fin_cnt = 1;
   var quiz_success_cnt = 0;
   var x, y;
   var choice = ["イ", "ロ", "ハ", "ニ"];
-  var pnt_sprit = ["q10", "q20", "q30", "q40", "q50", "ave", "all", "re"];
-  var years = [
-    "H23",
-    "H24",
-    "H25",
-    "H26",
-    "H27",
-    "H28",
-    "H29",
-    "H30",
-    "H31",
-    "R01"
-  ];
-  var pnt = new Array(years.length);
-  for (y = 0; y < years.length; y++) {
-    pnt[years[y]] = new Array(pnt_sprit.length);
-    for (x = 0; x < pnt_sprit.length; x++) {
-      pnt[years[y]][pnt_sprit[x]] = 0;
-    }
-  }
-  var pastNormal = new Array(years.length);
-  for (let y = 0; y < years.length; y++) {
-    pastNormal[years[y]] = new Array(50).fill(0);
-  }
-  var pastType = new Array(years.length);
-  for (let y = 0; y < years.length; y++) {
-    pastType[years[y]] = new Array(50).fill(0);
-  }
-
-  var H30 = [];
-  H30.push(
+  var R01_q = [];
+  R01_q.push(
     { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 4 },
+    { ans: "イ", type: 1, form: 4 },
+    { ans: "イ", type: 1, form: 4 },
     { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 2 },
+    { ans: "イ", type: 1, form: 4 },
     { ans: "イ", type: 1, form: 1 },
+    { ans: "イ", type: 1, form: 4 },
     { ans: "イ", type: 1, form: 1 }
   );
   var ans_record = [];
@@ -56,13 +33,14 @@ $(function() {
     var que_src = $(".quiz_question")
       .children("img")
       .attr("src")
+      .replace("year", gon.year)
       .replace("000", quiz_cnt + 1);
     $(".quiz_question")
       .children("img")
       .attr("src", que_src);
     quizArea.find(".quiz_ans_area ul").empty();
-    var success = H30[quiz_cnt]["ans"];
-    var form = H30[quiz_cnt]["form"];
+    var success = R01_q[quiz_cnt]["ans"];
+    var form = R01_q[quiz_cnt]["form"];
     for (let i = 1; i < 5; i++) {
       var fuga = "<li>" + ' <img src="/year/aNo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
@@ -86,13 +64,13 @@ $(function() {
     quizIroha();
     // 選択肢の形状を選択
     switch (form) {
-      case "1":
+      case 1:
         quizArea.find(".quiz_ans_area ul li").addClass("form_one");
         break;
-      case "2":
+      case 2:
         quizArea.find(".quiz_ans_area ul li").addClass("form_two");
         break;
-      case "4":
+      case 4:
         quizArea.find(".quiz_ans_area ul li").addClass("form_four");
         break;
       default:
@@ -133,7 +111,7 @@ $(function() {
     quizArea.find(".quiz_decide").removeClass("ready");
     $(".quiz_question")
       .children("img")
-      .attr("src", "/year-1-000.jpg");
+      .attr("src", "/year/q000.jpg");
     //問題のカウントを進める
     quiz_cnt++;
     if (quiz_fin_cnt > quiz_cnt) {
@@ -194,9 +172,7 @@ $(function() {
     quizArea.find("#quiz_result").show();
     quizArea.find("#quiz_record").show();
     ans_import = ans_record.join("");
-    console.log(ans_import);
     ans_import = parseInt(ans_import, 2);
-    console.log(ans_import);
     quizRecord();
   }
 
@@ -217,10 +193,10 @@ $(function() {
       dataType: "html",
       async: true,
       data: {
-        quiz_s_c: ans_import,
+        ans_import: ans_import
         // quiz_s_c: gon.ans_import
         // quiz_s_c: "5",
-        quiz_s_d: 55
+        // quiz_s_d: 233
       }
     });
   }
