@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Naka</title>
+  <title><%= content_for?(:title) ? yield(:title) : "電気工事士"%></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
