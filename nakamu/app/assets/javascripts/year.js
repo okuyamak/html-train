@@ -5,11 +5,10 @@ $(function() {
   var quizArea = $(".quiz_area");
   var quiz_html = quizArea.html();
   var quiz_cnt = 0;
-  gon.no = 0; //後で消す
-  var quiz_cnt_no = gon.no;
   var quiz_fin_cnt = 10;
   var quiz_success_cnt = 0;
   var mistake = 0;
+  var quiz_cnt_no;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var i;
   var R01_q = [];
@@ -25,20 +24,25 @@ $(function() {
     { ans: "イ", type: 1, form: 4 },
     { ans: "イ", type: 1, form: 1 }
   );
-  var miss = "0001111111";
+  var miss = "0101101111";
   var ans_record = [];
   var miss_cnt = 0;
   var miss_all = [];
   var miss_index = [];
-  quizReset();
   if (gon.no == 0) {
     missPraIn();
   }
+  quizReset();
   //クイズの表示
   function quizShow() {
     quizArea.find("#quiz_record").hide();
     quizArea.find("#quiz_number").text(quiz_cnt + 1 + "/" + quiz_fin_cnt);
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
+    if (gon.no == 0) {
+      quiz_cnt_no = miss_index[quiz_cnt] + 1;
+    } else {
+      quiz_cnt_no = gon.no;
+    }
     var que_src = $(".quiz_question")
       .children("img")
       .attr("src")
@@ -238,6 +242,7 @@ $(function() {
       miss_all.splice(miss_index[i], 1, ans_record[i]);
     }
     mistake = miss_all.join(",");
+    console.log(mistake);
   }
   //通常時の出力
   function normalOut() {
