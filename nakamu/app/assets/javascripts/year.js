@@ -5,13 +5,14 @@ $(function() {
   var quizArea = $(".quiz_area");
   var quiz_html = quizArea.html();
   var quiz_cnt = 0;
+  gon.no = 0; //後で消す
   var quiz_cnt_no = gon.no;
-  var quiz_fin_cnt = 1;
+  var quiz_fin_cnt = 10;
   var quiz_success_cnt = 0;
   var mistake = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
-  var R01_q = [];
   var i;
+  var R01_q = [];
   R01_q.push(
     { ans: "イ", type: 1, form: 1 },
     { ans: "イ", type: 1, form: 4 },
@@ -24,15 +25,15 @@ $(function() {
     { ans: "イ", type: 1, form: 4 },
     { ans: "イ", type: 1, form: 1 }
   );
+  var miss = "0001111111";
   var ans_record = [];
-  var miss = 0;
   var miss_cnt = 0;
   var miss_all = [];
   var miss_index = [];
   quizReset();
-  // if (gon.no == 0) {
-  missPractice();
-  // }
+  if (gon.no == 0) {
+    missPraIn();
+  }
   //クイズの表示
   function quizShow() {
     quizArea.find("#quiz_record").hide();
@@ -89,23 +90,7 @@ $(function() {
 
   //回答を選択した後の処理
   quizArea.on("click", ".ready", function() {
-    //画面を暗くするボックスを表示
-    quizArea.find(".quiz_area_bg").show();
-    quizArea.find("#quiz_next").show();
-    quizArea.find(".quiz_decide").hide();
-    if ($(".selected").is("[id=true_no]")) {
-      //正解の処理 〇を表示
-      quizArea.find(".quiz_title").addClass("true ans_icon");
-      quizArea.find(".quiz_title").text("正解");
-      quiz_success_cnt++;
-      ans_record.push(1);
-    } else {
-      //不正解の処理
-      quizArea.find(".quiz_title").addClass("false ans_icon");
-      quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
-      ans_record.push(0);
-    }
-    quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
+    quizAnsShow();
   });
 
   quizArea.on("click", "#quiz_next", function() {
@@ -127,6 +112,8 @@ $(function() {
       //次の問題を設定する
       quizShow();
     } else {
+      quizRecord();
+      missPraOut();
       quizResult();
     }
   });
@@ -168,6 +155,26 @@ $(function() {
       }
     }
   }
+  function quizAnsShow() {
+    //画面を暗くするボックスを表示
+    quizArea.find(".quiz_area_bg").show();
+    quizArea.find("#quiz_next").show();
+    quizArea.find(".quiz_decide").hide();
+    if ($(".selected").is("[id=true_no]")) {
+      //正解の処理 〇を表示
+      quizArea.find(".quiz_title").addClass("true ans_icon");
+      quizArea.find(".quiz_title").text("正解");
+      quiz_success_cnt++;
+      ans_record.push(1);
+    } else {
+      //不正解の処理
+      quizArea.find(".quiz_title").addClass("false ans_icon");
+      quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
+      ans_record.push(0);
+    }
+    quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
+  }
+
   //結果の表示
   function quizResult() {
     quizArea.find(".quiz_set").hide();
@@ -180,9 +187,14 @@ $(function() {
     quizArea.find("#quiz_result").html(text);
     quizArea.find("#quiz_result").show();
     quizArea.find("#quiz_record").show();
-    mistake = ans_record.join("");
-    mistake = parseInt(mistake, 2);
-    quizRecord();
+    // mistake = ans_record.join("");
+    // mistake = parseInt(mistake, 2);
+    var ans_record_in;
+    if (gon.no == 0) {
+      missPraOut();
+    } else {
+      normalOut();
+    }
   }
 
   //数値のリセット
@@ -204,20 +216,14 @@ $(function() {
       data: {
         mistake: mistake,
         quiz_success_cnt: quiz_success_cnt
-        // quiz_s_c: gon.ans_import
-        // quiz_s_c: "5",
-        // quiz_s_d: 233
       }
     });
   }
   //誤回答問題の読み込み
-  function missPractice() {
-    gon.quiz_10 = 1023;
-    miss = gon.quiz_10.toString(2);
+  function missPraIn() {
     console.log(miss);
     miss_all = miss.split("");
     console.log(miss_all);
-    // miss_all = miss_all.concat(miss.split(""));
     i = miss_all.indexOf("0");
     while (i >= 0) {
       miss_index.push(i);
@@ -225,5 +231,18 @@ $(function() {
     }
     console.log(miss_index);
     quiz_fin_cnt = miss_index.length;
+  }
+  //誤回答問題の出力
+  function missPraOut() {
+    for (let i = 0; i < miss_index.length; i++) {
+      miss_all.splice(miss_index[i], 1, ans_record[i]);
+    }
+    mistake = miss_all.join(",");
+  }
+  //通常時の出力
+  function normalOut() {
+    ans_record_in = ans_record.join(",");
+    miss_all.splice(gon.no - 1, 10, ans_record_in);
+    mistake = miss_all.join(",");
   }
 });
