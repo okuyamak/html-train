@@ -10,17 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_130914) do
+ActiveRecord::Schema.define(version: 2020_01_18_051803) do
 
   create_table "quiz_years", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.integer "y2019_10"
-    t.integer "y2019_20"
-    t.integer "y2019_30"
-    t.integer "y2019_40"
-    t.integer "y2019_50"
+    t.string "miss2019", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2018", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2017", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2016", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2015", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2014", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2013", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2012", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2011", default: "11111111111111111111111111111111111111111111111111"
+    t.string "miss2010", default: "11111111111111111111111111111111111111111111111111"
   end
 
   create_table "score_years", force: :cascade do |t|
