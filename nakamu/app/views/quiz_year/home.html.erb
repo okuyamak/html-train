@@ -1,7 +1,7 @@
 
 <% content_for :title do %>年度別一覧<% end %>
-      <%= link_to("練習問題","/year/R01_10",data:{"turbolinks" => false }) %>
-      <%= link_to("練習問題","/year/R01_20",data:{"turbolinks" => false }) %>
+      <%= link_to(@year.y2019_10,"/year/R01_10",data:{"turbolinks" => false }) %>
+      <%= link_to(@year.y2019_20,"/year/R01_20",data:{"turbolinks" => false }) %>
       <%= link_to("練習問題","/year/R01_30",data:{"turbolinks" => false }) %>
       <%= link_to("練習問題","/year/R01_40",data:{"turbolinks" => false }) %>
       <%= link_to("練習問題","/year/R01_50",data:{"turbolinks" => false }) %>

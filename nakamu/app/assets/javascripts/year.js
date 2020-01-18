@@ -5,11 +5,13 @@ $(function() {
   var quizArea = $(".quiz_area");
   var quiz_html = quizArea.html();
   var quiz_cnt = 0;
+  var quiz_cnt_no = gon.no;
   var quiz_fin_cnt = 1;
   var quiz_success_cnt = 0;
-  var x, y;
+  var mistake = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var R01_q = [];
+  var i;
   R01_q.push(
     { ans: "イ", type: 1, form: 1 },
     { ans: "イ", type: 1, form: 4 },
@@ -23,8 +25,14 @@ $(function() {
     { ans: "イ", type: 1, form: 1 }
   );
   var ans_record = [];
-  var ans_import = 0;
+  var miss = 0;
+  var miss_cnt = 0;
+  var miss_all = [];
+  var miss_index = [];
   quizReset();
+  // if (gon.no == 0) {
+  missPractice();
+  // }
   //クイズの表示
   function quizShow() {
     quizArea.find("#quiz_record").hide();
@@ -34,13 +42,13 @@ $(function() {
       .children("img")
       .attr("src")
       .replace("year", gon.year)
-      .replace("000", quiz_cnt + 1);
+      .replace("000", quiz_cnt_no);
     $(".quiz_question")
       .children("img")
       .attr("src", que_src);
     quizArea.find(".quiz_ans_area ul").empty();
-    var success = R01_q[quiz_cnt]["ans"];
-    var form = R01_q[quiz_cnt]["form"];
+    var success = R01_q[quiz_cnt_no - 1]["ans"];
+    var form = R01_q[quiz_cnt_no - 1]["form"];
     for (let i = 1; i < 5; i++) {
       var fuga = "<li>" + ' <img src="/year/aNo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
@@ -50,7 +58,7 @@ $(function() {
       var ans_src = $(fuga)
         .children("img")
         .attr("src")
-        .replace("No", gon.no + quiz_cnt)
+        .replace("No", quiz_cnt_no)
         .replace("000", i)
         .replace("year", gon.year);
       quizArea.find(".quiz_ans_area ul").append(fuga);
@@ -114,6 +122,7 @@ $(function() {
       .attr("src", "/year/q000.jpg");
     //問題のカウントを進める
     quiz_cnt++;
+    quiz_cnt_no++;
     if (quiz_fin_cnt > quiz_cnt) {
       //次の問題を設定する
       quizShow();
@@ -171,8 +180,8 @@ $(function() {
     quizArea.find("#quiz_result").html(text);
     quizArea.find("#quiz_result").show();
     quizArea.find("#quiz_record").show();
-    ans_import = ans_record.join("");
-    ans_import = parseInt(ans_import, 2);
+    mistake = ans_record.join("");
+    mistake = parseInt(mistake, 2);
     quizRecord();
   }
 
@@ -193,11 +202,28 @@ $(function() {
       dataType: "html",
       async: true,
       data: {
-        ans_import: ans_import
+        mistake: mistake,
+        quiz_success_cnt: quiz_success_cnt
         // quiz_s_c: gon.ans_import
         // quiz_s_c: "5",
         // quiz_s_d: 233
       }
     });
+  }
+  //誤回答問題の読み込み
+  function missPractice() {
+    gon.quiz_10 = 1023;
+    miss = gon.quiz_10.toString(2);
+    console.log(miss);
+    miss_all = miss.split("");
+    console.log(miss_all);
+    // miss_all = miss_all.concat(miss.split(""));
+    i = miss_all.indexOf("0");
+    while (i >= 0) {
+      miss_index.push(i);
+      i = miss_all.indexOf("0", i + 1);
+    }
+    console.log(miss_index);
+    quiz_fin_cnt = miss_index.length;
   }
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_16_130923) do
+ActiveRecord::Schema.define(version: 2020_01_17_130914) do
 
   create_table "quiz_years", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 2020_01_16_130923) do
     t.integer "y2019_30"
     t.integer "y2019_40"
     t.integer "y2019_50"
+  end
+
+  create_table "score_years", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "y2019_10", default: 0
+    t.integer "y2019_20", default: 0
+    t.integer "y2019_30", default: 0
+    t.integer "y2019_40", default: 0
+    t.integer "y2019_50", default: 0
+    t.integer "y2019_all", default: 0
   end
 
   create_table "users", force: :cascade do |t|
