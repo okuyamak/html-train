@@ -94,6 +94,24 @@ $(function() {
     $(".quiz_question")
       .children("img")
       .attr("src", que_src);
+    quizArea.find("#quiz_figure").show();
+    if (30 <= quiz_cnt_no && quiz_cnt_no <= 34) {
+      var figure_no = "30_figure";
+    } else if (41 <= quiz_cnt_no && quiz_cnt_no <= 45) {
+      var figure_no = "40_figure";
+    } else if (45 <= quiz_cnt_no && quiz_cnt_no <= 50) {
+      var figure_no = "45_figure";
+    } else {
+      quizArea.find("#quiz_figure").hide();
+    }
+    var figure_src = $("#quiz_figure")
+      .children("img")
+      .attr("src")
+      .replace("year", gon.year)
+      .replace("000", figure_no);
+    $("#quiz_figure")
+      .children("img")
+      .attr("src", figure_src);
     quizArea.find(".quiz_ans_area ul").empty();
     var success = R01_q[quiz_cnt_no - 1]["ans"];
     var form = R01_q[quiz_cnt_no - 1]["form"];
