@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   def set_current_user
     @current_user = User.find_by(id:session[:user_id])
+    @@year = QuizYear.find_by(user_id: session[:user_id])
+    @score_y = ScoreYear.find_by(user_id: session[:user_id])
   end
 
   def authenticate_user
@@ -17,6 +19,8 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "すでにログインしています"
       redirect_to("/")
     end
+  end
+  def info_user
 
   end
 end

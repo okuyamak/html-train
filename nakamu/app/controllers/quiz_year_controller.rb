@@ -3,13 +3,14 @@ class QuizYearController < ApplicationController
   before_action :authenticate_user,{only: [:R01]}
 
   def home
-    @@year = QuizYear.find_by(user_id: session[:user_id])
-    @score_y = ScoreYear.find_by(user_id: session[:user_id])
   end
   def R01
     gon.year = @@quiz_year
     gon.no = @@quiz_no
     gon.miss = @@quiz_miss
+    if @@quiz_year2
+      gon.year2 = @@quiz_year2
+    end
   end
   def r01_10
     @@quiz_year = 2019
@@ -44,6 +45,13 @@ class QuizYearController < ApplicationController
   def r01_miss
     @@quiz_year = 2019
     @@quiz_no = 0
+    @@quiz_miss = @@year.miss2019
+    redirect_to("/year/R01")
+  end
+  def r01_type1
+    @@quiz_year = 2019
+    @@quiz_year2 = 2018
+    @@quiz_no = 102
     @@quiz_miss = @@year.miss2019
     redirect_to("/year/R01")
   end

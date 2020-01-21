@@ -12,9 +12,9 @@ $(function() {
   var i;
   var R01_q = [];
   R01_q.push(
-    { ans: "イ", type: 1, form: 1 }, //1
-    { ans: "イ", type: 1, form: 1 }, //2
-    { ans: "イ", type: 1, form: 1 }, //3
+    { ans: "イ", type: 2, form: 1 }, //1
+    { ans: "イ", type: 2, form: 1 }, //2
+    { ans: "イ", type: 2, form: 1 }, //3
     { ans: "イ", type: 1, form: 1 }, //4
     { ans: "イ", type: 1, form: 1 }, //5
     { ans: "イ", type: 1, form: 4 }, //6
@@ -65,6 +65,8 @@ $(function() {
   );
   var quiz_cnt_no = gon.no;
   var ans_record = [];
+  var quiz_year = gon.year;
+  var quiz_year2 = gon.year2;
   var miss_cnt = 0;
   var miss = gon.miss;
   miss = miss.replace(/,/g, "");
@@ -73,8 +75,13 @@ $(function() {
   miss_all = miss.split("");
   console.log(miss_all);
   var miss_index = [];
+  var type_index = [];
   if (gon.no == 0) {
     missPraIn();
+    quiz_fin_cnt = miss_index.length;
+  } else if (gon.no > 100) {
+    typeMode2();
+    quiz_fin_cnt = type_index.length;
   }
   quizReset();
   //クイズの表示
@@ -84,12 +91,14 @@ $(function() {
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
     if (gon.no == 0) {
       quiz_cnt_no = miss_index[quiz_cnt] + 1;
-    } else {
+    } else if (gon.no > 100) {
+      quiz_year = type_index[quiz_cnt].year;
+      quiz_cnt_no = type_index[quiz_cnt].no;
     }
     var que_src = $(".quiz_question")
       .children("img")
       .attr("src")
-      .replace("year", gon.year)
+      .replace("year", quiz_year)
       .replace("000", quiz_cnt_no);
     $(".quiz_question")
       .children("img")
@@ -107,7 +116,7 @@ $(function() {
     var figure_src = $("#quiz_figure")
       .children("img")
       .attr("src")
-      .replace("year", gon.year)
+      .replace("year", quiz_year)
       .replace("000", figure_no);
     $("#quiz_figure")
       .children("img")
@@ -126,7 +135,7 @@ $(function() {
         .attr("src")
         .replace("No", quiz_cnt_no)
         .replace("000", i)
-        .replace("year", gon.year);
+        .replace("year", quiz_year);
       quizArea.find(".quiz_ans_area ul").append(fuga);
       $(".quiz_ans_area ul li:last")
         .children("img")
@@ -282,6 +291,29 @@ $(function() {
       }
     });
   }
+  //単元ごとの問題読み込み
+  function typeMode2() {
+    var quiz_type = gon.no - 100;
+    switch (gon.year) {
+      case 2019:
+        var array1 = R01_q;
+        var array2 = R01_q;
+        break;
+      default:
+        break;
+    }
+    for (let s = 0; s < array1.length; s++) {
+      if (array1[s].type == quiz_type) {
+        type_index.push({ year: quiz_year, no: s + 1 });
+        console.log(type_index);
+      }
+    }
+    for (let s = 0; s < array2.length; s++) {
+      if (array2[s].type == quiz_type) {
+        type_index.push({ year: quiz_year2, no: s + 1 });
+      }
+    }
+  }
   //誤回答問題の読み込み
   function missPraIn() {
     i = miss_all.indexOf("0");
@@ -290,7 +322,6 @@ $(function() {
       i = miss_all.indexOf("0", i + 1);
     }
     console.log(miss_index);
-    quiz_fin_cnt = miss_index.length;
   }
   //誤回答問題の出力
   function missPraOut() {
@@ -314,5 +345,6 @@ $(function() {
     mistake = mistake.replace(/,/g, "");
     console.log(mistake);
     // mistake = "11111111111111111111111111111111111111111111111111";
+    // mistake = "001111111111111111111111111111111111111111111111111";
   }
 });
