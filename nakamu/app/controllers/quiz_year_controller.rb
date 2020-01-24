@@ -8,9 +8,7 @@ class QuizYearController < ApplicationController
     gon.year = @@quiz_year
     gon.no = @@quiz_no
     gon.miss = @@quiz_miss
-    if @@quiz_year2
-      gon.year2 = @@quiz_year2
-    end
+      # gon.year2 = @@quiz_year2
   end
   def r01_10
     @@quiz_year = 2019
@@ -50,9 +48,10 @@ class QuizYearController < ApplicationController
   end
   def r01_type1
     @@quiz_year = 2019
-    @@quiz_year2 = 2018
+    # @@quiz_year2 = 2018
     @@quiz_no = 102
     @@quiz_miss = @@year.miss2019
+    gon.year2 = 2018
     redirect_to("/year/R01")
   end
 

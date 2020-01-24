@@ -235,14 +235,14 @@ $(function() {
     quizArea.find(".quiz_decide").hide();
     if ($(".selected").is("[id=true_no]")) {
       //正解の処理 〇を表示
-      quizArea.find(".quiz_title").addClass("true ans_icon");
-      quizArea.find(".quiz_title").text("正解");
+      quizArea.find("quiz_answer").addClass("true ans_icon");
+      quizArea.find("quiz_answer").text("正解");
       quiz_success_cnt++;
       ans_record.push(1);
     } else {
       //不正解の処理
-      quizArea.find(".quiz_title").addClass("false ans_icon");
-      quizArea.find(".quiz_title").text("不正解 答え:　" + shuffled_true);
+      quizArea.find(".quiz_answer").addClass("false ans_icon");
+      quizArea.find(".quiz_answer").text("不正解 答え:　" + shuffled_true);
       ans_record.push(0);
     }
     quizArea.find(".quiz_ans_area #true_no").attr("id", "true_indicate");
