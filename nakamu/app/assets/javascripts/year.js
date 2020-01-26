@@ -1,5 +1,4 @@
 "use strict";
-
 $(function() {
   var shuffled_true;
   var quizArea = $(".quiz_area");
@@ -10,71 +9,19 @@ $(function() {
   var mistake = 0;
   var choice = ["イ", "ロ", "ハ", "ニ"];
   var i;
-  var R01_q = [];
-  R01_q.push(
-    { ans: "イ", type: 2, form: 1 }, //1
-    { ans: "イ", type: 2, form: 1 }, //2
-    { ans: "イ", type: 2, form: 1 }, //3
-    { ans: "イ", type: 1, form: 1 }, //4
-    { ans: "イ", type: 1, form: 1 }, //5
-    { ans: "イ", type: 1, form: 4 }, //6
-    { ans: "イ", type: 1, form: 4 }, //7
-    { ans: "イ", type: 1, form: 4 }, //8
-    { ans: "イ", type: 1, form: 1 }, //9
-    { ans: "イ", type: 1, form: 2 }, //10
-    { ans: "イ", type: 1, form: 4 }, //11
-    { ans: "イ", type: 1, form: 1 }, //12
-    { ans: "イ", type: 1, form: 4 }, //13
-    { ans: "イ", type: 1, form: 1 }, //14
-    { ans: "イ", type: 1, form: 4 }, //15
-    { ans: "イ", type: 1, form: 4 }, //16
-    { ans: "イ", type: 1, form: 4 }, //17
-    { ans: "イ", type: 1, form: 1 }, //18
-    { ans: "イ", type: 1, form: 2 }, //19
-    { ans: "イ", type: 1, form: 4 }, //20
-    { ans: "イ", type: 1, form: 1 }, //21
-    { ans: "イ", type: 1, form: 4 }, //22
-    { ans: "イ", type: 1, form: 1 }, //23
-    { ans: "イ", type: 1, form: 4 }, //24
-    { ans: "イ", type: 1, form: 4 }, //25
-    { ans: "イ", type: 1, form: 4 }, //26
-    { ans: "イ", type: 1, form: 1 }, //27
-    { ans: "イ", type: 1, form: 2 }, //28
-    { ans: "イ", type: 1, form: 4 }, //29
-    { ans: "イ", type: 1, form: 1 }, //30
-    { ans: "イ", type: 1, form: 4 }, //31
-    { ans: "イ", type: 1, form: 1 }, //32
-    { ans: "イ", type: 1, form: 4 }, //33
-    { ans: "イ", type: 1, form: 4 }, //34
-    { ans: "イ", type: 1, form: 4 }, //35
-    { ans: "イ", type: 1, form: 1 }, //36
-    { ans: "イ", type: 1, form: 2 }, //37
-    { ans: "イ", type: 1, form: 4 }, //38
-    { ans: "イ", type: 1, form: 1 }, //39
-    { ans: "イ", type: 1, form: 4 }, //40
-    { ans: "イ", type: 1, form: 1 }, //41
-    { ans: "イ", type: 1, form: 4 }, //42
-    { ans: "イ", type: 1, form: 4 }, //43
-    { ans: "イ", type: 1, form: 4 }, //44
-    { ans: "イ", type: 1, form: 1 }, //45
-    { ans: "イ", type: 1, form: 2 }, //46
-    { ans: "イ", type: 1, form: 4 }, //47
-    { ans: "イ", type: 1, form: 1 }, //48
-    { ans: "イ", type: 1, form: 4 }, //49
-    { ans: "イ", type: 1, form: 1 } //50
-  );
   var quiz_cnt_no = gon.no;
   var ans_record = [];
   var quiz_year = gon.year;
   var quiz_year2 = gon.year2;
-  var miss_cnt = 0;
-  var miss = gon.miss;
-  miss = miss.replace(/,/g, "");
-  console.log(miss);
-  var miss_all = [];
-  miss_all = miss.split("");
-  console.log(miss_all);
-  var miss_index = [];
+  if (gon.miss != null) {
+    var miss = gon.miss;
+    miss = miss.replace(/,/g, "");
+    console.log(miss);
+    var miss_all = [];
+    miss_all = miss.split("");
+    console.log(miss_all);
+    var miss_index = [];
+  }
   var type_index = [];
   if (gon.no == 0) {
     missPraIn();
@@ -122,8 +69,8 @@ $(function() {
       .children("img")
       .attr("src", figure_src);
     quizArea.find(".quiz_ans_area ul").empty();
-    var success = R01_q[quiz_cnt_no - 1]["ans"];
-    var form = R01_q[quiz_cnt_no - 1]["form"];
+    var success = q_2019[quiz_cnt_no - 1]["ans"];
+    var form = q_2019[quiz_cnt_no - 1]["form"];
     for (i = 1; i < 5; i++) {
       var fuga = "<li>" + ' <img src="/year/aNo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
@@ -294,23 +241,14 @@ $(function() {
   //単元ごとの問題読み込み
   function typeMode2() {
     var quiz_type = gon.no - 100;
-    switch (gon.year) {
-      case 2019:
-        var array1 = R01_q;
-        var array2 = R01_q;
-        break;
-      default:
-        break;
-    }
-    for (let s = 0; s < array1.length; s++) {
-      if (array1[s].type == quiz_type) {
-        type_index.push({ year: quiz_year, no: s + 1 });
-        console.log(type_index);
-      }
-    }
-    for (let s = 0; s < array2.length; s++) {
-      if (array2[s].type == quiz_type) {
-        type_index.push({ year: quiz_year2, no: s + 1 });
+    var array = [];
+    array.push(eval("q_" + gon.year));
+    for (let s = 0; s < array.length; s++) {
+      for (let t = 0; t < array[s].length; t++) {
+        if (array[s][t].type == quiz_type) {
+          type_index.push({ year: quiz_year, no: t + 1 });
+          console.log("type_index" + type_index);
+        }
       }
     }
   }
@@ -337,7 +275,7 @@ $(function() {
     console.log(ans_record);
 
     var ans_record_in;
-    ans_record_in = ans_record.join(",");
+    ans_record_in = an_record.join(",");
     miss_all.splice(gon.no - 1, 10, ans_record_in);
     console.log(miss_all);
     mistake = miss_all.join("");

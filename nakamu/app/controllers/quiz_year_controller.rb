@@ -1,58 +1,35 @@
 class QuizYearController < ApplicationController
 
-  before_action :authenticate_user,{only: [:R01]}
+  before_action :authenticate_user
+  before_action :year_2019, only: [:r01_10, :r01_20, :r01_30, :r01_40, :r01_50, :r01_miss]
+  before_action :no_1, only: [:r01_10]
+  before_action :no_11, only: [:r01_20]
+  before_action :no_21, only: [:r01_30]
+  before_action :no_31, only: [:r01_40]
+  before_action :no_41, only: [:r01_50]
+  # after_action :redirect_quiz, except: [:R01, :update, :home]
 
-  def home
-  end
-  def R01
-    gon.year = @@quiz_year
-    gon.no = @@quiz_no
-    gon.miss = @@quiz_miss
-      # gon.year2 = @@quiz_year2
-  end
+
   def r01_10
-    @@quiz_year = 2019
-    @@quiz_no = 1
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
   def r01_20
-    @@quiz_year = 2019
-    @@quiz_no = 11
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
   def r01_30
-    @@quiz_year = 2019
-    @@quiz_no = 21
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
   def r01_40
-    @@quiz_year = 2019
-    @@quiz_no = 31
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
   def r01_50
-    @@quiz_year = 2019
-    @@quiz_no = 41
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
   def r01_miss
-    @@quiz_year = 2019
-    @@quiz_no = 0
-    @@quiz_miss = @@year.miss2019
-    redirect_to("/year/R01")
+    redirect_quiz
   end
-  def r01_type1
-    @@quiz_year = 2019
-    # @@quiz_year2 = 2018
-    @@quiz_no = 102
-    @@quiz_miss = @@year.miss2019
-    gon.year2 = 2018
-    redirect_to("/year/R01")
+  def redirect_quiz
+    redirect_to("/quiz/base")
   end
 
   def update
@@ -89,5 +66,25 @@ class QuizYearController < ApplicationController
     end
     @year.save
     @score_y.save
+  end
+
+  def year_2019
+    $quiz_year = 2019
+    $quiz_miss = @@year.miss2019
+  end
+  def no_1
+    $quiz_no = 1
+  end
+  def no_11
+    $quiz_no = 11
+  end
+  def no_21
+    $quiz_no = 21
+  end
+  def no_31
+    $quiz_no = 31
+  end
+  def no_41
+    $quiz_no = 41
   end
 end
