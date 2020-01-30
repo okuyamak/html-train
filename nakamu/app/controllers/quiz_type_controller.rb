@@ -36,8 +36,8 @@ class QuizTypeController < ApplicationController
     redirect_to("/quiz/base")
   end
   def no_101
-    $quiz_year = 2019
+    $quiz_year = 2018
     $quiz_miss = @@year.miss2019
-    $quiz_no = 102
+    $quiz_no = 1002
   end
 end

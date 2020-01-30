@@ -26,6 +26,7 @@ class QuizYearController < ApplicationController
     redirect_quiz
   end
   def r01_miss
+    $quiz_no = 0
     redirect_quiz
   end
   def redirect_quiz
@@ -33,39 +34,16 @@ class QuizYearController < ApplicationController
   end
 
   def update
-    @year = QuizYear.find_by(user_id: session[:user_id])
-    if @year
+
+    @@year = QuizYear.find_by(user_id: session[:user_id])
+    eval("@@year.miss#{$quiz_year} =  params[:mistake]")
+    @@year.save
+    if quiz_no ==0
     else
-      @year = QuizYear.new(user_id:session[:user_id])
-      @year.save
-    end
-    @score_y = ScoreYear.find_by(user_id: session[:user_id])
-    if @score_y
-    else
-      @score_y = ScoreYear.new(user_id:session[:user_id])
+      @score_y = ScoreYear.find_by(user_id: session[:user_id])
+      eval("@score_y.y#{$quiz_year}_#{$quiz_no+9} =  params[:quiz_success_cnt]")
       @score_y.save
     end
-
-    case @@quiz_year
-    when 2019 then
-      @year.miss2019 = params[:mistake]
-      case @@quiz_no
-      when 1  then
-        @score_y.y2019_10 = params[:quiz_success_cnt]
-      when 11  then
-        @score_y.y2019_20 = params[:quiz_success_cnt]
-      when 21  then
-        @score_y.y2019_30 = params[:quiz_success_cnt]
-      when 31  then
-        @score_y.y2019_40 = params[:quiz_success_cnt]
-      when 41  then
-        @score_y.y2019_50 = params[:quiz_success_cnt]
-      else
-      end
-    else
-    end
-    @year.save
-    @score_y.save
   end
 
   def year_2019

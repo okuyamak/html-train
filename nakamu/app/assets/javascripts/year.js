@@ -240,9 +240,17 @@ $(function() {
   }
   //単元ごとの問題読み込み
   function typeMode2() {
-    var quiz_type = gon.no - 100;
-    var array = [];
-    array.push(eval("q_" + gon.year));
+    if (gon.no > 1000) {
+      var quiz_type = gon.no - 1000;
+      var array = [];
+      for (let s = gon.year; s > gon.year - 9; s--) {
+        array.push(eval("q_" + s));
+      }
+    } else {
+      var quiz_type = gon.no - 100;
+      var array = [];
+      array.push(eval("q_" + gon.year));
+    }
     for (let s = 0; s < array.length; s++) {
       for (let t = 0; t < array[s].length; t++) {
         if (array[s][t].type == quiz_type) {
@@ -266,7 +274,7 @@ $(function() {
     for (let i = 0; i < miss_index.length; i++) {
       miss_all.splice(miss_index[i], 1, ans_record[i]);
     }
-    mistake = miss_all.join(",");
+    mistake = miss_all.join("");
     mistake = mistake.replace(/,/g, "");
     console.log(mistake);
   }
@@ -275,7 +283,7 @@ $(function() {
     console.log(ans_record);
 
     var ans_record_in;
-    ans_record_in = an_record.join(",");
+    ans_record_in = ans_record.join(",");
     miss_all.splice(gon.no - 1, 10, ans_record_in);
     console.log(miss_all);
     mistake = miss_all.join("");

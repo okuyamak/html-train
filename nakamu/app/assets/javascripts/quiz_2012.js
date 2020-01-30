@@ -1,5 +1,5 @@
-var q_2019 = [];
-q_2019.push(
+var q_2012 = [];
+q_2012.push(
   { ans: "イ", type: 2, form: 1 }, //1
   { ans: "イ", type: 2, form: 1 }, //2
   { ans: "イ", type: 2, form: 1 }, //3
