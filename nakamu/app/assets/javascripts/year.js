@@ -13,18 +13,17 @@ $(function() {
   var ans_record = [];
   var quiz_year = gon.year;
   var miss_set = gon.miss_set;
+  console.log(typeof miss_set[0]);
   if (gon.no > 1000) {
     var quiz_type = gon.no - 1000;
   } else if (gon.no > 100) {
     var quiz_type = gon.no - 100;
   }
   var type_index = [];
-  if (gon.no == 0) {
+  if (gon.no == 0 || gon.no > 100) {
     typeMode();
     quiz_fin_cnt = type_index.length;
-  } else if (gon.no > 100) {
-    typeMode();
-    quiz_fin_cnt = type_index.length;
+    quiz_fin_cnt = 5;
   }
   quizReset();
   //クイズの表示
@@ -220,18 +219,19 @@ $(function() {
   }
   //解答の記録
   function quizRecord() {
-    if (gon.no == 0) {
-      missPraOut();
+    if (gon.no == 0 || gon.no > 100) {
+      typePraOut();
     } else {
       normalOut();
     }
+
     $.ajax({
       url: "/year/update",
       type: "POST",
       dataType: "html",
       async: true,
       data: {
-        mistake: mistake,
+        miss_set: miss_set,
         quiz_success_cnt: quiz_success_cnt
       }
     });
@@ -246,22 +246,22 @@ $(function() {
       for (let t = 0; t < array[s].length; t++) {
         if (gon.no > 1000) {
           if (array[s][t].type == quiz_type && miss_set[s][t] == 0) {
-            type_index.push({ year: gon.year[s], no: t + 1 });
+            type_index.push({ year: gon.year[s], no: t + 1, array: s });
           }
         } else if (gon.no > 100) {
           if (array[s][t].type == quiz_type) {
-            type_index.push({ year: gon.year[s], no: t + 1 });
+            type_index.push({ year: gon.year[s], no: t + 1, array: s });
           }
         } else if (gon.no == 0) {
           if (miss_set[s][t] == 0) {
-            type_index.push({ year: gon.year[s], no: t + 1 });
+            type_index.push({ year: gon.year[s], no: t + 1, array: s });
           }
         }
       }
     }
   }
   //タイプやり直しの出力
-  function typeMode10Out() {
+  function typeModeOut() {
     for (let i = 0; i < miss_set.length; i++) {
       for (let j = 0; j < miss_set[i].length; j++) {
         miss_set[i].splice(miss_index[i], 1, ans_record[i]);
@@ -272,26 +272,37 @@ $(function() {
     console.log(mistake);
   }
   //誤回答問題の出力
-  function missPraOut() {
-    for (let i = 0; i < miss_index.length; i++) {
-      miss_all.splice(miss_index[i], 1, ans_record[i]);
+  // function missPraOut() {
+  //   for (let i = 0; i < miss_index.length; i++) {
+  //     miss_all.splice(miss_index[i], 1, ans_record[i]);
+  //   }
+  //   mistake = miss_all.join("");
+  //   mistake = mistake.replace(/,/g, "");
+  //   console.log(mistake);
+  // }
+  function typePraOut() {
+    for (let s = 0; s < ans_record.length; s++) {
+      var arr_no = type_index[s].array;
+      var let_no = type_index[s].no;
+      miss_set[arr_no] =
+        miss_set[arr_no].slice(0, let_no - 1) +
+        ans_record[s] +
+        miss_set[arr_no].slice(let_no);
     }
-    mistake = miss_all.join("");
-    mistake = mistake.replace(/,/g, "");
-    console.log(mistake);
   }
   //通常時の出力
   function normalOut() {
+    ans_record = ans_record.join("");
     console.log(ans_record);
-
-    var ans_record_in;
-    ans_record_in = ans_record.join(",");
-    miss_all.splice(gon.no - 1, 10, ans_record_in);
-    console.log(miss_all);
-    mistake = miss_all.join("");
-    console.log(mistake);
-    mistake = mistake.replace(/,/g, "");
-    console.log(mistake);
+    console.log(miss_set[0]);
+    console.log(gon.no);
+    miss_set[0] =
+      miss_set[0].slice(0, gon.no - 1) +
+      ans_record +
+      miss_set[0].slice(gon.no + 9);
+    console.log(miss_set[0]);
+    // miss_set[0].splice(gon.no - 1, 10, ans_record);
+    // console.log(mistake);
     // mistake = "11111111111111111111111111111111111111111111111111";
     // mistake = "001111111111111111111111111111111111111111111111111";
   }

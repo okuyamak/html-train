@@ -57,7 +57,7 @@ class QuizTypeController < ApplicationController
   # end
   def no_101
     $quiz_year = [2019]
-    $quiz_no = 31
+    $quiz_no = 0
     $miss_set = [
       @@year.miss2019,
     ]
