@@ -12,46 +12,18 @@ $(function() {
   var quiz_cnt_no = gon.no;
   var ans_record = [];
   var quiz_year = gon.year;
-  // if (gon.miss != null) {
-  //   var miss = gon.miss;
-  //   miss = miss.replace(/,/g, "");
-  //   console.log(miss);
-  //   var miss_all = [];
-  //   miss_all = miss.split("");
-  //   console.log(miss_all);
-  //   var miss_index = [];
-  // }
-  var miss_set = [
-    gon.miss_2010,
-    gon.miss_2011,
-    gon.miss_2012,
-    gon.miss_2013,
-    gon.miss_2014,
-    gon.miss_2015,
-    gon.miss_2016,
-    gon.miss_2017,
-    gon.miss_2018,
-    gon.miss_2019
-  ];
-  if (quiz_year > 1000) {
-    console.log(miss_set);
-    // var miss = gon.miss;
-    for (let s = 0; s <= miss_set.length; s++) {
-      console.log(miss_set[s]);
-      // miss_set[s] = gon.miss_2019.split("");
-      // miss_set[s] = miss_set[s].replace(/[1-9]/g, ",");
-      // eval("miss_" + s + "=" + "miss_" + s).replace(/,/g, "");
-    }
+  var miss_set = gon.miss_set;
+  if (gon.no > 1000) {
+    var quiz_type = gon.no - 1000;
+  } else if (gon.no > 100) {
+    var quiz_type = gon.no - 100;
   }
   var type_index = [];
   if (gon.no == 0) {
-    missPraIn();
-    quiz_fin_cnt = miss_index.length;
-  } else if (gon.no > 100 && gon.no < 120) {
     typeMode();
     quiz_fin_cnt = type_index.length;
-  } else if (gon.no > 1000) {
-    typeMode10();
+  } else if (gon.no > 100) {
+    typeMode();
     quiz_fin_cnt = type_index.length;
   }
   quizReset();
@@ -60,11 +32,11 @@ $(function() {
     quizArea.find("#quiz_record").hide();
     quizArea.find("#quiz_number").text(quiz_cnt + 1 + "/" + quiz_fin_cnt);
     quizArea.find(".quiz_no").text(quiz_cnt + 1);
-    if (gon.no == 0) {
-      quiz_cnt_no = miss_index[quiz_cnt] + 1;
-    } else if (gon.no > 100) {
+    if (gon.no > 100 || gon.no == 0) {
       quiz_year = type_index[quiz_cnt].year;
       quiz_cnt_no = type_index[quiz_cnt].no;
+    } else {
+      quiz_year = gon.year[0];
     }
     var que_src = $(".quiz_question")
       .children("img")
@@ -74,27 +46,31 @@ $(function() {
     $(".quiz_question")
       .children("img")
       .attr("src", que_src);
-    quizArea.find("#quiz_figure").show();
+    var figure_no = null;
     if (30 <= quiz_cnt_no && quiz_cnt_no <= 34) {
-      var figure_no = "30_figure";
+      figure_no = "30_figure";
     } else if (41 <= quiz_cnt_no && quiz_cnt_no <= 45) {
-      var figure_no = "40_figure";
+      figure_no = "40_figure";
     } else if (45 <= quiz_cnt_no && quiz_cnt_no <= 50) {
-      var figure_no = "45_figure";
+      figure_no = "45_figure";
     } else {
       quizArea.find("#quiz_figure").hide();
     }
-    var figure_src = $("#quiz_figure")
-      .children("img")
-      .attr("src")
-      .replace("year", quiz_year)
-      .replace("000", figure_no);
-    $("#quiz_figure")
-      .children("img")
-      .attr("src", figure_src);
+    if (figure_no) {
+      quizArea.find("#quiz_figure").show();
+      var figure_src = $("#quiz_figure")
+        .children("img")
+        .attr("src")
+        .replace("year", quiz_year)
+        .replace("000", figure_no);
+      $("#quiz_figure")
+        .children("img")
+        .attr("src", figure_src);
+    }
     quizArea.find(".quiz_ans_area ul").empty();
-    var success = q_2019[quiz_cnt_no - 1]["ans"];
-    var form = q_2019[quiz_cnt_no - 1]["form"];
+    var q_plus = eval("q_" + quiz_year);
+    var success = q_plus[quiz_cnt_no - 1]["ans"];
+    var form = q_plus[quiz_cnt_no - 1]["form"];
     for (i = 1; i < 5; i++) {
       var fuga = "<li>" + ' <img src="/year/aNo-000.jpg"/>' + "</li>";
       if (choice[i - 1] == success) {
@@ -231,8 +207,6 @@ $(function() {
     quizArea.find("#quiz_result").html(text);
     quizArea.find("#quiz_result").show();
     quizArea.find("#quiz_record").show();
-    // mistake = ans_record.join("");
-    // mistake = parseInt(mistake, 2);
   }
 
   //数値のリセット
@@ -262,43 +236,40 @@ $(function() {
       }
     });
   }
-  //単元で間違えた問題復習用　読み込み
-  function typeMode10() {
-    var array = [];
-    var quiz_type = gon.no - 1000;
-    for (let s = quiz_year; s < quiz_year + 9; s++) {
-      array.push(eval("q_" + s));
-    }
-    for (let s = 0; s < array.length; s++) {
-      for (let t = 0; t < array[s].length; t++) {
-        if (array[s][t].type == quiz_type && miss_set[s][t] == 0) {
-          type_index.push({ year: quiz_year + s, no: t + 1 });
-          console.log("type_index", quiz_year + s, t + 1);
-        }
-      }
-    }
-  }
-  //単元　読み込み
+  //type問題復習用　読み込み
   function typeMode() {
     var array = [];
-    var quiz_type = gon.no - 100;
-    array.push(eval("q_" + gon.year));
+    for (let s = 0; s < gon.year.length; s++) {
+      array.push(eval("q_" + gon.year[s]));
+    }
     for (let s = 0; s < array.length; s++) {
       for (let t = 0; t < array[s].length; t++) {
-        if (array[s][t].type == quiz_type) {
-          type_index.push({ year: quiz_year + s, no: t + 1 });
+        if (gon.no > 1000) {
+          if (array[s][t].type == quiz_type && miss_set[s][t] == 0) {
+            type_index.push({ year: gon.year[s], no: t + 1 });
+          }
+        } else if (gon.no > 100) {
+          if (array[s][t].type == quiz_type) {
+            type_index.push({ year: gon.year[s], no: t + 1 });
+          }
+        } else if (gon.no == 0) {
+          if (miss_set[s][t] == 0) {
+            type_index.push({ year: gon.year[s], no: t + 1 });
+          }
         }
       }
     }
   }
-  //誤回答問題の読み込み
-  function missPraIn() {
-    i = miss_all.indexOf("0");
-    while (i >= 0) {
-      miss_index.push(i);
-      i = miss_all.indexOf("0", i + 1);
+  //タイプやり直しの出力
+  function typeMode10Out() {
+    for (let i = 0; i < miss_set.length; i++) {
+      for (let j = 0; j < miss_set[i].length; j++) {
+        miss_set[i].splice(miss_index[i], 1, ans_record[i]);
+      }
     }
-    console.log(miss_index);
+    mistake = miss_all.join("");
+    mistake = mistake.replace(/,/g, "");
+    console.log(mistake);
   }
   //誤回答問題の出力
   function missPraOut() {

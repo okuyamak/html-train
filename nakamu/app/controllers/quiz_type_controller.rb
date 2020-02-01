@@ -36,22 +36,30 @@ class QuizTypeController < ApplicationController
     redirect_to("/quiz/base")
   end
   # def no_101
-  #   $quiz_year = 2018
-  #   $miss_2010 = @@year.miss2010
+  #   $quiz_year = [2018]
+  #   $quiz_no = 102
+  # end
+  # def no_101
+  #   $quiz_year =[ 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 ]
   #   $quiz_no = 1002
+  #   $miss_set = [
+  #     @@year.miss2019,
+  #     @@year.miss2011,
+  #     @@year.miss2012,
+  #     @@year.miss2013,
+  #     @@year.miss2014,
+  #     @@year.miss2015,
+  #     @@year.miss2016,
+  #     @@year.miss2017,
+  #     @@year.miss2018,
+  #     @@year.miss2019,
+  #   ]
   # end
   def no_101
-    $quiz_year = 2010
-    $quiz_no = 1002
-    $miss_2010 = @@year.miss2019
-    $miss_2011 = @@year.miss2019
-    $miss_2012 = @@year.miss2012
-    $miss_2013 = @@year.miss2013
-    $miss_2014 = @@year.miss2014
-    $miss_2015 = @@year.miss2015
-    $miss_2016 = @@year.miss2016
-    $miss_2017 = @@year.miss2017
-    $miss_2018 = @@year.miss2018
-    $miss_2019 = @@year.miss2019
+    $quiz_year = [2019]
+    $quiz_no = 31
+    $miss_set = [
+      @@year.miss2019,
+    ]
   end
 end
