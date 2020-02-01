@@ -12,22 +12,46 @@ $(function() {
   var quiz_cnt_no = gon.no;
   var ans_record = [];
   var quiz_year = gon.year;
-  var quiz_year2 = gon.year2;
-  if (gon.miss != null) {
-    var miss = gon.miss;
-    miss = miss.replace(/,/g, "");
-    console.log(miss);
-    var miss_all = [];
-    miss_all = miss.split("");
-    console.log(miss_all);
-    var miss_index = [];
+  // if (gon.miss != null) {
+  //   var miss = gon.miss;
+  //   miss = miss.replace(/,/g, "");
+  //   console.log(miss);
+  //   var miss_all = [];
+  //   miss_all = miss.split("");
+  //   console.log(miss_all);
+  //   var miss_index = [];
+  // }
+  var miss_set = [
+    gon.miss_2010,
+    gon.miss_2011,
+    gon.miss_2012,
+    gon.miss_2013,
+    gon.miss_2014,
+    gon.miss_2015,
+    gon.miss_2016,
+    gon.miss_2017,
+    gon.miss_2018,
+    gon.miss_2019
+  ];
+  if (quiz_year > 1000) {
+    console.log(miss_set);
+    // var miss = gon.miss;
+    for (let s = 0; s <= miss_set.length; s++) {
+      console.log(miss_set[s]);
+      // miss_set[s] = gon.miss_2019.split("");
+      // miss_set[s] = miss_set[s].replace(/[1-9]/g, ",");
+      // eval("miss_" + s + "=" + "miss_" + s).replace(/,/g, "");
+    }
   }
   var type_index = [];
   if (gon.no == 0) {
     missPraIn();
     quiz_fin_cnt = miss_index.length;
-  } else if (gon.no > 100) {
-    typeMode2();
+  } else if (gon.no > 100 && gon.no < 120) {
+    typeMode();
+    quiz_fin_cnt = type_index.length;
+  } else if (gon.no > 1000) {
+    typeMode10();
     quiz_fin_cnt = type_index.length;
   }
   quizReset();
@@ -238,24 +262,31 @@ $(function() {
       }
     });
   }
-  //単元ごとの問題読み込み
-  function typeMode2() {
-    if (gon.no > 1000) {
-      var quiz_type = gon.no - 1000;
-      var array = [];
-      for (let s = gon.year; s > gon.year - 9; s--) {
-        array.push(eval("q_" + s));
-      }
-    } else {
-      var quiz_type = gon.no - 100;
-      var array = [];
-      array.push(eval("q_" + gon.year));
+  //単元で間違えた問題復習用　読み込み
+  function typeMode10() {
+    var array = [];
+    var quiz_type = gon.no - 1000;
+    for (let s = quiz_year; s < quiz_year + 9; s++) {
+      array.push(eval("q_" + s));
     }
     for (let s = 0; s < array.length; s++) {
       for (let t = 0; t < array[s].length; t++) {
+        if (array[s][t].type == quiz_type && miss_set[s][t] == 0) {
+          type_index.push({ year: quiz_year + s, no: t + 1 });
+          console.log("type_index", quiz_year + s, t + 1);
+        }
+      }
+    }
+  }
+  //単元　読み込み
+  function typeMode() {
+    var array = [];
+    var quiz_type = gon.no - 100;
+    array.push(eval("q_" + gon.year));
+    for (let s = 0; s < array.length; s++) {
+      for (let t = 0; t < array[s].length; t++) {
         if (array[s][t].type == quiz_type) {
-          type_index.push({ year: quiz_year, no: t + 1 });
-          console.log("type_index" + type_index);
+          type_index.push({ year: quiz_year + s, no: t + 1 });
         }
       }
     }

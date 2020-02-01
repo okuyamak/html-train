@@ -35,9 +35,23 @@ class QuizTypeController < ApplicationController
   def redirect_quiz
     redirect_to("/quiz/base")
   end
+  # def no_101
+  #   $quiz_year = 2018
+  #   $miss_2010 = @@year.miss2010
+  #   $quiz_no = 1002
+  # end
   def no_101
-    $quiz_year = 2018
-    $quiz_miss = @@year.miss2019
+    $quiz_year = 2010
     $quiz_no = 1002
+    $miss_2010 = @@year.miss2019
+    $miss_2011 = @@year.miss2019
+    $miss_2012 = @@year.miss2012
+    $miss_2013 = @@year.miss2013
+    $miss_2014 = @@year.miss2014
+    $miss_2015 = @@year.miss2015
+    $miss_2016 = @@year.miss2016
+    $miss_2017 = @@year.miss2017
+    $miss_2018 = @@year.miss2018
+    $miss_2019 = @@year.miss2019
   end
 end
