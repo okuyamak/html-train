@@ -23,7 +23,6 @@ $(function() {
   if (gon.no == 0 || gon.no > 100) {
     typeMode();
     quiz_fin_cnt = type_index.length;
-    quiz_fin_cnt = 5;
   }
   quizReset();
   //クイズの表示

@@ -36,8 +36,14 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         @@year = QuizYear.new(user_id:session[:user_id])
         @score_y = ScoreYear.new(user_id:session[:user_id])
+        @type = QuizType.new(user_id:session[:user_id])
+        @score_t10 = ScoreType10.new(user_id:session[:user_id])
+        @score_t15 = ScoreType15.new(user_id:session[:user_id])
         @@year.save
         @score_y.save
+        @score_t10.save
+        @score_t15.save
+        @type.save
         redirect_to("/")
       else
         flash[:notice]="ユーザーネーム、パスワードは４文字以上です"

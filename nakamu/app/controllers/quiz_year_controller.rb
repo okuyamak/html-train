@@ -10,22 +10,22 @@ class QuizYearController < ApplicationController
   # after_action :redirect_quiz, except: [:R01, :update, :home]
 
 
-  def r01_10
+  def y2019_10
     redirect_quiz
   end
-  def r01_20
+  def y2019_20
     redirect_quiz
   end
-  def r01_30
+  def y2019_30
     redirect_quiz
   end
-  def r01_40
+  def y2019_40
     redirect_quiz
   end
-  def r01_50
+  def y2019_50
     redirect_quiz
   end
-  def r01_miss
+  def y2019_miss
     $quiz_no = 0
     redirect_quiz
   end
