@@ -13,7 +13,6 @@ $(function() {
   var ans_record = [];
   var quiz_year = gon.year;
   var miss_set = gon.miss_set;
-  console.log(typeof miss_set[0]);
   if (gon.no > 1000) {
     var quiz_type = gon.no - 1000;
   } else if (gon.no > 100) {
@@ -230,6 +229,8 @@ $(function() {
       dataType: "html",
       async: true,
       data: {
+        quiz_year: gon.year,
+        quiz_no: gon.no,
         miss_set: miss_set,
         quiz_success_cnt: quiz_success_cnt
       }
@@ -245,15 +246,15 @@ $(function() {
       for (let t = 0; t < array[s].length; t++) {
         if (gon.no > 1000) {
           if (array[s][t].type == quiz_type && miss_set[s][t] == 0) {
-            type_index.push({ year: gon.year[s], no: t + 1, array: s });
+            type_index.push({ year: gon.year[s], no: t + 1, arr: s });
           }
         } else if (gon.no > 100) {
           if (array[s][t].type == quiz_type) {
-            type_index.push({ year: gon.year[s], no: t + 1, array: s });
+            type_index.push({ year: gon.year[s], no: t + 1, arr: s });
           }
         } else if (gon.no == 0) {
           if (miss_set[s][t] == 0) {
-            type_index.push({ year: gon.year[s], no: t + 1, array: s });
+            type_index.push({ year: gon.year[s], no: t + 1, arr: s });
           }
         }
       }
@@ -281,7 +282,7 @@ $(function() {
   // }
   function typePraOut() {
     for (let s = 0; s < ans_record.length; s++) {
-      var arr_no = type_index[s].array;
+      var arr_no = type_index[s].arr;
       var let_no = type_index[s].no;
       miss_set[arr_no] =
         miss_set[arr_no].slice(0, let_no - 1) +
@@ -292,14 +293,10 @@ $(function() {
   //通常時の出力
   function normalOut() {
     ans_record = ans_record.join("");
-    console.log(ans_record);
-    console.log(miss_set[0]);
-    console.log(gon.no);
     miss_set[0] =
       miss_set[0].slice(0, gon.no - 1) +
       ans_record +
       miss_set[0].slice(gon.no + 9);
-    console.log(miss_set[0]);
     // miss_set[0].splice(gon.no - 1, 10, ans_record);
     // console.log(mistake);
     // mistake = "11111111111111111111111111111111111111111111111111";
