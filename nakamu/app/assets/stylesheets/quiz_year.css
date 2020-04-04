@@ -19,7 +19,8 @@ body {
 
 .quiz_area .quiz_title {
   background: #e4ceae;
-  box-shadow: 0px 0px 0px 5px #e4ceae;
+  -webkit-box-shadow: 0px 0px 0px 5px #e4ceae;
+          box-shadow: 0px 0px 0px 5px #e4ceae;
   border: dashed 2px white;
   padding: 5px 0px;
   width: 50%;
@@ -33,19 +34,26 @@ body {
 .quiz_area .quiz_ans_area ul {
   margin: 10px 0 0 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .quiz_area .quiz_ans_area ul ::after {
   content: "";
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   clear: both;
 }
 
 .quiz_area .quiz_ans_area li {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-weight: bold;
   list-style: none;
   float: left;
@@ -78,19 +86,25 @@ body {
 }
 
 .quiz_area .quiz_ans_area .form_one {
-  flex: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
   width: 100%;
   margin: 0 0 -2px 0;
 }
 
 .quiz_area .quiz_ans_area .form_two {
-  flex: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
   width: 50%;
   margin: 0 0 -2px -2px;
 }
 
 .quiz_area .quiz_ans_area .form_four {
-  flex: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
   width: 25%;
   margin: 0 0 0 -2px;
 }
@@ -179,7 +193,8 @@ body {
 
 .quiz_area .quiz_answer {
   background: #e4ceae;
-  box-shadow: 0px 0px 0px 5px #e4ceae;
+  -webkit-box-shadow: 0px 0px 0px 5px #e4ceae;
+          box-shadow: 0px 0px 0px 5px #e4ceae;
   border: dashed 2px white;
   padding: 5px 0px;
   width: 50%;
@@ -195,18 +210,21 @@ body {
 
 .quiz_area .true {
   background-color: #d21d22;
-  box-shadow: 0px 0px 0px 5px #d21d22;
+  -webkit-box-shadow: 0px 0px 0px 5px #d21d22;
+          box-shadow: 0px 0px 0px 5px #d21d22;
   color: #fff;
 }
 
 .quiz_area .false {
   background-color: #4d8fac;
-  box-shadow: 0px 0px 0px 5px #4d8fac;
+  -webkit-box-shadow: 0px 0px 0px 5px #4d8fac;
+          box-shadow: 0px 0px 0px 5px #4d8fac;
   color: #fff;
 }
 
 .quiz_area .quiz_question {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: 4px solid #ccc;
   text-align: center;
 }
@@ -225,3 +243,4 @@ body {
   background: #444;
   color: #fff;
 }
+/*# sourceMappingURL=quiz_year.css.map */
